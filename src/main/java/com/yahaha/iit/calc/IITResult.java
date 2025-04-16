@@ -12,9 +12,8 @@ import javax.money.MonetaryAmount;
 @EqualsAndHashCode
 @ToString
 public class IITResult {
-    public static final CurrencyUnit CNY = Monetary.getCurrency("CNY");
-    public static final MonetaryAmount ZERO = Monetary.getDefaultAmountFactory().setCurrency(CNY).setNumber(0).create();
-
+    public static final MonetaryAmount ZERO = MoneyUtil.ZERO;
+    
     private MonetaryAmount taxBaseForAnnualIncome;
     private MonetaryAmount taxAmountForAnnualIncome;
     private MonetaryAmount taxBaseForAnnualBonus;

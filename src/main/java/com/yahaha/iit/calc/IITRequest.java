@@ -11,8 +11,7 @@ import javax.money.MonetaryAmount;
 @EqualsAndHashCode
 @ToString
 public class IITRequest {
-    public static final CurrencyUnit CNY = Monetary.getCurrency("CNY");
-    public static final MonetaryAmount ZERO = Monetary.getDefaultAmountFactory().setCurrency(CNY).setNumber(0).create();
+    public static final MonetaryAmount ZERO = MoneyUtil.ZERO;
 
     // Incomes
     private MonetaryAmount annualWageIncome;
