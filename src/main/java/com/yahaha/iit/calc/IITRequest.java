@@ -1,10 +1,10 @@
 package com.yahaha.iit.calc;
 
 import com.yahaha.iit.util.MoneyUtil;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.money.CurrencyUnit;
-import javax.money.Monetary;
 import javax.money.MonetaryAmount;
 
 @NoArgsConstructor

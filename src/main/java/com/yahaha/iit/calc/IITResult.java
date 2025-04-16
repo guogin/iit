@@ -5,15 +5,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.money.CurrencyUnit;
-import javax.money.Monetary;
 import javax.money.MonetaryAmount;
 
 @EqualsAndHashCode
 @ToString
 public class IITResult {
     public static final MonetaryAmount ZERO = MoneyUtil.ZERO;
-    
+
     private MonetaryAmount taxBaseForAnnualIncome;
     private MonetaryAmount taxAmountForAnnualIncome;
     private MonetaryAmount taxBaseForAnnualBonus;
