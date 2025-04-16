@@ -25,6 +25,9 @@ public class IITRequest {
     private MonetaryAmount additionalSpecialDeductions;
     private MonetaryAmount otherDeductions;
 
+    // Other
+    private BonusTaxationMethod bonusTaxationMethod;
+
     public void setAnnualWageIncome(Number annualWageIncome) {
         this.annualWageIncome = MoneyUtil.toAmount(annualWageIncome);
     }
@@ -57,6 +60,10 @@ public class IITRequest {
         this.otherDeductions = MoneyUtil.toAmount(otherDeductions);
     }
 
+    public void setBonusTaxationMethod(BonusTaxationMethod bonusTaxationMethod) {
+        this.bonusTaxationMethod = bonusTaxationMethod;
+    }
+
     public MonetaryAmount getAnnualWageIncome() {
         return annualWageIncome == null? ZERO : annualWageIncome;
     }
@@ -87,5 +94,9 @@ public class IITRequest {
 
     public MonetaryAmount getOtherDeductions() {
         return otherDeductions == null? ZERO : otherDeductions;
+    }
+
+    public BonusTaxationMethod getBonusTaxationMethod() {
+        return bonusTaxationMethod == null? BonusTaxationMethod.ONE_TIME_TAXATION : bonusTaxationMethod;
     }
 }
