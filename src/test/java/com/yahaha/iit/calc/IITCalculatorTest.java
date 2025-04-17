@@ -23,11 +23,23 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_6000_per_mon_and_10000_one_time_bonus_then_tax_should_be_660() {
+    void when_income_6000_monthly_and_10000_one_time_bonus_then_tax_should_be_660() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
         request.setBonusTaxationMethod(BonusTaxationMethod.ONE_TIME_TAXATION);
+
+        IITResult result = calculator.calculate(request);
+
+        assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(660));
+    }
+
+    @Test
+    void when_income_6000_monthly_and_10000_integrated_bonus_then_tax_should_be_660() {
+        IITRequest request = new IITRequest();
+        request.setAnnualWageIncome(6000 * 12);
+        request.setAnnualOneTimeBonus(10000);
+        request.setBonusTaxationMethod(BonusTaxationMethod.INTEGRATED_TAXATION);
 
         IITResult result = calculator.calculate(request);
 

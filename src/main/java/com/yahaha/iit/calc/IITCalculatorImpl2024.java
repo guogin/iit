@@ -12,7 +12,10 @@ public class IITCalculatorImpl2024 implements IITCalculator {
         MonetaryAmount taxableAnnualIncome = determineTaxableAnnualComprehensiveIncome(request);
         MonetaryAmount taxAmountForAnnualIncome = taxableAnnualIncome.multiply(0.03); // 3%
         MonetaryAmount taxableAnnualBonus = request.getAnnualOneTimeBonus();
-        MonetaryAmount taxAmountForAnnualBonus = taxableAnnualBonus.multiply(0.03); // 3%
+        MonetaryAmount taxAmountForAnnualBonus = MoneyUtil.ZERO;
+        if (request.getBonusTaxationMethod() == BonusTaxationMethod.ONE_TIME_TAXATION) {
+            taxAmountForAnnualBonus = taxableAnnualBonus.multiply(0.03); // 3%
+        }
         return IITResult.builder()
                 .taxBaseForAnnualIncome(taxableAnnualIncome)
                 .taxAmountForAnnualIncome(taxAmountForAnnualIncome)
