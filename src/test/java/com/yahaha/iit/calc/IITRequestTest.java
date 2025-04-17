@@ -19,7 +19,7 @@ public class IITRequestTest {
         assertThat(request.getServiceRemuneration()).isEqualTo(ZERO);
         assertThat(request.getRoyaltyFees()).isEqualTo(ZERO);
         assertThat(request.getAuthorsRemuneration()).isEqualTo(ZERO);
-        assertThat(request.getSpecialDeductionsForSocialInsuranceAndHousingFund()).isEqualTo(ZERO);
+        assertThat(request.getSpecialDeductions()).isEqualTo(ZERO);
         assertThat(request.getAdditionalSpecialDeductions()).isEqualTo(ZERO);
         assertThat(request.getOtherDeductions()).isEqualTo(ZERO);
     }

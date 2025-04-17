@@ -37,14 +37,14 @@ public class IITResult {
         return taxAmountForAnnualBonus == null ? ZERO : taxAmountForAnnualBonus;
     }
 
-    public IITResult(Number taxBaseForAnnualIncome,
-                     Number taxAmountForAnnualIncome,
-                     Number taxBaseForAnnualBonus,
-                     Number taxAmountForAnnualBonus) {
-        this.taxBaseForAnnualIncome = MoneyUtil.toAmount(taxBaseForAnnualIncome);
-        this.taxAmountForAnnualIncome = MoneyUtil.toAmount(taxAmountForAnnualIncome);
-        this.taxBaseForAnnualBonus = MoneyUtil.toAmount(taxBaseForAnnualBonus);
-        this.taxAmountForAnnualBonus = MoneyUtil.toAmount(taxAmountForAnnualBonus);
+    public IITResult(MonetaryAmount taxBaseForAnnualIncome,
+                     MonetaryAmount taxAmountForAnnualIncome,
+                     MonetaryAmount taxBaseForAnnualBonus,
+                     MonetaryAmount taxAmountForAnnualBonus) {
+        this.taxBaseForAnnualIncome = taxBaseForAnnualIncome;
+        this.taxAmountForAnnualIncome = taxAmountForAnnualIncome;
+        this.taxBaseForAnnualBonus = taxBaseForAnnualBonus;
+        this.taxAmountForAnnualBonus = taxAmountForAnnualBonus;
     }
 
     public static Builder builder() {
@@ -53,27 +53,47 @@ public class IITResult {
 
     @NoArgsConstructor
     public static class Builder {
-        private Number taxBaseForAnnualIncome;
-        private Number taxAmountForAnnualIncome;
-        private Number taxBaseForAnnualBonus;
-        private Number taxAmountForAnnualBonus;
+        private MonetaryAmount taxBaseForAnnualIncome;
+        private MonetaryAmount taxAmountForAnnualIncome;
+        private MonetaryAmount taxBaseForAnnualBonus;
+        private MonetaryAmount taxAmountForAnnualBonus;
 
         public Builder taxBaseForAnnualIncome(Number taxBaseForAnnualIncome) {
+            this.taxBaseForAnnualIncome = MoneyUtil.toAmount(taxBaseForAnnualIncome);
+            return this;
+        }
+
+        public Builder taxBaseForAnnualIncome(MonetaryAmount taxBaseForAnnualIncome) {
             this.taxBaseForAnnualIncome = taxBaseForAnnualIncome;
             return this;
         }
 
         public Builder taxAmountForAnnualIncome(Number taxAmountForAnnualIncome) {
+            this.taxAmountForAnnualIncome = MoneyUtil.toAmount(taxAmountForAnnualIncome);
+            return this;
+        }
+
+        public Builder taxAmountForAnnualIncome(MonetaryAmount taxAmountForAnnualIncome) {
             this.taxAmountForAnnualIncome = taxAmountForAnnualIncome;
             return this;
         }
 
         public Builder taxBaseForAnnualBonus(Number taxBaseForAnnualBonus) {
+            this.taxBaseForAnnualBonus = MoneyUtil.toAmount(taxBaseForAnnualBonus);
+            return this;
+        }
+
+        public Builder taxBaseForAnnualBonus(MonetaryAmount taxBaseForAnnualBonus) {
             this.taxBaseForAnnualBonus = taxBaseForAnnualBonus;
             return this;
         }
 
         public Builder taxAmountForAnnualBonus(Number taxAmountForAnnualBonus) {
+            this.taxAmountForAnnualBonus = MoneyUtil.toAmount(taxAmountForAnnualBonus);
+            return this;
+        }
+
+        public Builder taxAmountForAnnualBonus(MonetaryAmount taxAmountForAnnualBonus) {
             this.taxAmountForAnnualBonus = taxAmountForAnnualBonus;
             return this;
         }
