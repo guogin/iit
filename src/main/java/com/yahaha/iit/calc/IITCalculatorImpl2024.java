@@ -10,11 +10,14 @@ public class IITCalculatorImpl2024 implements IITCalculator {
     @Override
     public IITResult calculate(IITRequest request) {
         MonetaryAmount taxableAnnualIncome = determineTaxableAnnualComprehensiveIncome(request);
-        MonetaryAmount taxAmountForAnnualIncome = taxableAnnualIncome.multiply(0.03); // 3%
+        ProgressiveTax annualComprehensiveIncomeTax = new AnnualComprehensiveIncomeTax();
+        MonetaryAmount taxAmountForAnnualIncome = annualComprehensiveIncomeTax.calculate(taxableAnnualIncome);
+
         MonetaryAmount taxableAnnualBonus = request.getAnnualOneTimeBonus();
         MonetaryAmount taxAmountForAnnualBonus = MoneyUtil.ZERO;
         if (request.getBonusTaxationMethod() == BonusTaxationMethod.ONE_TIME_TAXATION) {
-            taxAmountForAnnualBonus = taxableAnnualBonus.multiply(0.03); // 3%
+            ProgressiveTax annualOneTimeBonusTax = new AnnualOneTimeBonusTax();
+            taxAmountForAnnualBonus = annualOneTimeBonusTax.calculate(taxableAnnualBonus);
         }
         return IITResult.builder()
                 .taxBaseForAnnualIncome(taxableAnnualIncome)

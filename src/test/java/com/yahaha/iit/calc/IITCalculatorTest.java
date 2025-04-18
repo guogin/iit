@@ -45,4 +45,16 @@ public class IITCalculatorTest {
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(660));
     }
+
+    @Test
+    void when_income_10000_monthly_and_50000_one_time_bonus_then_tax_should_be_8270() {
+        IITRequest request = new IITRequest();
+        request.setAnnualWageIncome(10000 * 12);
+        request.setAnnualOneTimeBonus(50000);
+        request.setBonusTaxationMethod(BonusTaxationMethod.ONE_TIME_TAXATION);
+
+        IITResult result = calculator.calculate(request);
+
+        assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(8270));
+    }
 }

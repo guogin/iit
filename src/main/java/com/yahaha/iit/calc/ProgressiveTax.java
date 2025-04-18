@@ -1,0 +1,7 @@
+package com.yahaha.iit.calc;
+
+import javax.money.MonetaryAmount;
+
+public interface ProgressiveTax {
+    MonetaryAmount calculate(MonetaryAmount taxBaseAmount);
+}
