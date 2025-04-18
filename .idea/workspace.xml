@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeTax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusTax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/ProgressiveTax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/ProgressiveTaxBracket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744866486096</updated>
       <workItem from="1744866487179" duration="13541000" />
-      <workItem from="1744953201609" duration="2116000" />
+      <workItem from="1744953201609" duration="2550000" />
     </task>
     <servers />
   </component>
