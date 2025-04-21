@@ -23,7 +23,7 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_6000_monthly_and_10000_one_time_bonus_then_tax_should_be_660() {
+    void when_income_6k_monthly_and_10k_one_time_bonus_then_tax_should_be_660() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
@@ -35,7 +35,7 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_6000_monthly_and_10000_integrated_bonus_then_tax_should_be_660() {
+    void when_income_6k_monthly_and_10k_integrated_bonus_then_tax_should_be_660() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
@@ -47,7 +47,7 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_10000_monthly_and_50000_one_time_bonus_then_tax_should_be_8270() {
+    void when_income_10k_monthly_and_50k_one_time_bonus_then_tax_should_be_8270() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(10000 * 12);
         request.setAnnualOneTimeBonus(50000);
@@ -59,7 +59,7 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_10000_monthly_and_50000_integrated_bonus_then_tax_should_be_8480() {
+    void when_income_10k_monthly_and_50k_integrated_bonus_then_tax_should_be_8480() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(10000 * 12);
         request.setAnnualOneTimeBonus(50000);
@@ -68,5 +68,29 @@ public class IITCalculatorTest {
         IITResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(8480));
+    }
+
+    @Test
+    void when_income_18k_montly_and_300k_one_time_bonus_then_tax_should_be_72870() {
+        IITRequest request = new IITRequest();
+        request.setAnnualWageIncome(18000 * 12);
+        request.setAnnualOneTimeBonus(300000);
+        request.setBonusTaxationMethod(BonusTaxationMethod.ONE_TIME_TAXATION);
+
+        IITResult result = calculator.calculate(request);
+
+        assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(72870));
+    }
+
+    @Test
+    void when_income_18k_montly_and_300k_integrated_bonus_then_tax_should_be_83880() {
+        IITRequest request = new IITRequest();
+        request.setAnnualWageIncome(18000 * 12);
+        request.setAnnualOneTimeBonus(300000);
+        request.setBonusTaxationMethod(BonusTaxationMethod.INTEGRATED_TAXATION);
+
+        IITResult result = calculator.calculate(request);
+
+        assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(83880));
     }
 }

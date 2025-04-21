@@ -5,6 +5,7 @@ import com.yahaha.iit.util.MoneyUtil;
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 public abstract class AbstractProgressiveTax implements ProgressiveTax {
@@ -15,8 +16,11 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
         UnaryOperator<MonetaryAmount> allocator = getIncomeAllocationFunction();
         MonetaryAmount allocatedTaxBaseAmount = allocator.apply(taxBaseAmount);
 
+        Predicate<ProgressiveTaxBracket> isInBracket = b -> b.getFromAmount().isLessThan(allocatedTaxBaseAmount) && b.getToAmount().isGreaterThanOrEqualTo(allocatedTaxBaseAmount);
+        Predicate<ProgressiveTaxBracket> isZero = b -> b.getFromAmount().isZero() && allocatedTaxBaseAmount.isZero();
+
         ProgressiveTaxBracket bracket = brackets.stream()
-                .filter(b -> b.getFromAmount().isLessThanOrEqualTo(allocatedTaxBaseAmount) && b.getToAmount().isGreaterThan(allocatedTaxBaseAmount))
+                .filter(isZero.or(isInBracket))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No tax bracket found for the given amount: " + allocatedTaxBaseAmount));
 
