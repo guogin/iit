@@ -5,6 +5,7 @@ import com.yahaha.iit.util.MoneyUtil;
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
@@ -12,7 +13,7 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
     protected static final MonetaryAmount INFINITE_AMOUNT = MoneyUtil.toAmount(BigDecimal.valueOf(Double.MAX_VALUE));
 
     @Override
-    public MonetaryAmount calculate(MonetaryAmount taxBaseAmount) {
+    public TraceableAmount calculate(MonetaryAmount taxBaseAmount) {
         UnaryOperator<MonetaryAmount> allocator = getIncomeAllocationFunction();
         MonetaryAmount allocatedTaxBaseAmount = allocator.apply(taxBaseAmount);
 
@@ -27,7 +28,15 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
         MonetaryAmount taxAmount = taxBaseAmount.multiply(bracket.getTaxRate())
                 .subtract(bracket.getRapidCalculationDeduction());
 
-        return taxAmount;
+        List<DiagnosticMessage> traceLogs = new ArrayList<>();
+        int index = brackets.indexOf(bracket) + 1;
+        String taxRateInPercentage = MoneyUtil.formatPercentage(bracket.getTaxRate());
+        traceLogs.add(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", index, taxRateInPercentage));
+        traceLogs.add(new DiagnosticMessage("计算税额时，扣除速算扣除数{0}", bracket.getRapidCalculationDeduction()));
+        traceLogs.add(new DiagnosticMessage("最终税额为{0}", MoneyUtil.format(taxAmount)));
+        TraceableAmount traceableAmount = new TraceableAmount(taxAmount, traceLogs);
+
+        return traceableAmount;
     }
 
     private ArrayList<ProgressiveTaxBracket> brackets = new ArrayList<>();
