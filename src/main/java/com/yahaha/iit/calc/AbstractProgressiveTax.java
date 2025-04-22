@@ -25,7 +25,7 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
                 .orElseThrow(() -> new IllegalArgumentException("No tax bracket found for the given amount: " + allocatedTaxBaseAmount));
 
         MonetaryAmount taxAmount = taxBaseAmount.multiply(bracket.getTaxRate())
-                .subtract(bracket.getQuickReductionNumber());
+                .subtract(bracket.getRapidCalculationDeduction());
 
         return taxAmount;
     }

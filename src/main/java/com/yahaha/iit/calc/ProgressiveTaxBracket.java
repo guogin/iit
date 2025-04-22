@@ -16,5 +16,5 @@ public class ProgressiveTaxBracket {
     private final MonetaryAmount fromAmount;
     private final MonetaryAmount toAmount;
     private final BigDecimal taxRate;
-    private final MonetaryAmount quickReductionNumber;
+    private final MonetaryAmount rapidCalculationDeduction;
 }
