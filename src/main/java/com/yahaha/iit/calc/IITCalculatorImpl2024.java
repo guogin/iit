@@ -15,7 +15,7 @@ public class IITCalculatorImpl2024 implements IITCalculator {
 
         MonetaryAmount taxableAnnualBonus = request.getAnnualOneTimeBonus();
         MonetaryAmount taxAmountForAnnualBonus = MoneyUtil.ZERO;
-        if (request.getBonusTaxationMethod() == BonusTaxationMethod.ONE_TIME_TAXATION) {
+        if (request.getBonusTaxationOption() == BonusTaxationOption.ONE_TIME_TAXATION) {
             ProgressiveTax annualOneTimeBonusTax = new AnnualOneTimeBonusTax();
             taxAmountForAnnualBonus = annualOneTimeBonusTax.calculate(taxableAnnualBonus);
         }
@@ -50,7 +50,7 @@ public class IITCalculatorImpl2024 implements IITCalculator {
         additions.put("稿酬", request.getAuthorsRemuneration());
         additions.put("特许权使用费", request.getRoyaltyFees());
 
-        if (request.getBonusTaxationMethod() == BonusTaxationMethod.INTEGRATED_TAXATION) {
+        if (request.getBonusTaxationOption() == BonusTaxationOption.INTEGRATED_TAXATION) {
             additions.put("全年一次性奖金", request.getAnnualOneTimeBonus());
         }
 

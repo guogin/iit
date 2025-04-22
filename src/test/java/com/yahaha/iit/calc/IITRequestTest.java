@@ -28,6 +28,6 @@ public class IITRequestTest {
     void when_not_specified_then_getBonusTaxationMethod_should_have_default_value() {
         IITRequest request = new IITRequest();
 
-        assertThat(request.getBonusTaxationMethod()).isNotNull();
+        assertThat(request.getBonusTaxationOption()).isNotNull();
     }
 }

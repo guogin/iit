@@ -27,7 +27,7 @@ public class IITCalculatorTest {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
-        request.setBonusTaxationMethod(BonusTaxationMethod.ONE_TIME_TAXATION);
+        request.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
 
         IITResult result = calculator.calculate(request);
 
@@ -39,7 +39,7 @@ public class IITCalculatorTest {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
-        request.setBonusTaxationMethod(BonusTaxationMethod.INTEGRATED_TAXATION);
+        request.setBonusTaxationOption(BonusTaxationOption.INTEGRATED_TAXATION);
 
         IITResult result = calculator.calculate(request);
 
@@ -51,7 +51,7 @@ public class IITCalculatorTest {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(10000 * 12);
         request.setAnnualOneTimeBonus(50000);
-        request.setBonusTaxationMethod(BonusTaxationMethod.ONE_TIME_TAXATION);
+        request.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
 
         IITResult result = calculator.calculate(request);
 
@@ -63,7 +63,7 @@ public class IITCalculatorTest {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(10000 * 12);
         request.setAnnualOneTimeBonus(50000);
-        request.setBonusTaxationMethod(BonusTaxationMethod.INTEGRATED_TAXATION);
+        request.setBonusTaxationOption(BonusTaxationOption.INTEGRATED_TAXATION);
 
         IITResult result = calculator.calculate(request);
 
@@ -71,11 +71,11 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_18k_montly_and_300k_one_time_bonus_then_tax_should_be_72870() {
+    void when_income_18k_monthly_and_300k_one_time_bonus_then_tax_should_be_72870() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(18000 * 12);
         request.setAnnualOneTimeBonus(300000);
-        request.setBonusTaxationMethod(BonusTaxationMethod.ONE_TIME_TAXATION);
+        request.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
 
         IITResult result = calculator.calculate(request);
 
@@ -83,11 +83,11 @@ public class IITCalculatorTest {
     }
 
     @Test
-    void when_income_18k_montly_and_300k_integrated_bonus_then_tax_should_be_83880() {
+    void when_income_18k_monthly_and_300k_integrated_bonus_then_tax_should_be_83880() {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(18000 * 12);
         request.setAnnualOneTimeBonus(300000);
-        request.setBonusTaxationMethod(BonusTaxationMethod.INTEGRATED_TAXATION);
+        request.setBonusTaxationOption(BonusTaxationOption.INTEGRATED_TAXATION);
 
         IITResult result = calculator.calculate(request);
 

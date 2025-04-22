@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/CalculationProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/CalculationProcedureImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/ProgressiveTaxBracket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/ProgressiveTaxBracket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/BonusTaxationMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/BonusTaxationOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITRequestTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744866486096</updated>
       <workItem from="1744866487179" duration="13541000" />
-      <workItem from="1744953201609" duration="14997000" />
+      <workItem from="1744953201609" duration="16346000" />
     </task>
     <servers />
   </component>

@@ -26,7 +26,7 @@ public class IITRequest {
     private MonetaryAmount otherDeductions; //其他扣除项目
 
     // Other
-    private BonusTaxationMethod bonusTaxationMethod;
+    private BonusTaxationOption bonusTaxationOption;
 
     /**
      * @param annualWageIncome 年度工资收入
@@ -85,10 +85,10 @@ public class IITRequest {
     }
 
     /**
-     * @param bonusTaxationMethod 奖金计税方式
+     * @param bonusTaxationOption 奖金计税方式
      */
-    public void setBonusTaxationMethod(BonusTaxationMethod bonusTaxationMethod) {
-        this.bonusTaxationMethod = bonusTaxationMethod;
+    public void setBonusTaxationOption(BonusTaxationOption bonusTaxationOption) {
+        this.bonusTaxationOption = bonusTaxationOption;
     }
 
     /**
@@ -150,7 +150,7 @@ public class IITRequest {
     /**
      * @return 奖金计税方式
      */
-    public BonusTaxationMethod getBonusTaxationMethod() {
-        return bonusTaxationMethod == null? BonusTaxationMethod.ONE_TIME_TAXATION : bonusTaxationMethod;
+    public BonusTaxationOption getBonusTaxationOption() {
+        return bonusTaxationOption == null? BonusTaxationOption.ONE_TIME_TAXATION : bonusTaxationOption;
     }
 }
