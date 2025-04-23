@@ -6,13 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.money.MonetaryAmount;
+import static com.yahaha.iit.util.MoneyUtil.ZERO;
 
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class IITRequest {
-    public static final MonetaryAmount ZERO = MoneyUtil.ZERO;
-
     // Incomes
     private MonetaryAmount annualWageIncome; //年度工资收入
     private MonetaryAmount annualOneTimeBonus; //全年一次性奖金
