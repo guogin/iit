@@ -11,5 +11,5 @@ import java.util.List;
 @ToString
 public class TraceableAmount {
     private MonetaryAmount amount;
-    private List<DiagnosticMessage> traceLogs;
+    private TraceLog traceLog;
 }

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import static com.yahaha.iit.util.MoneyUtil.toAmount;
 
+/**
+ * @Reference <a href="https://www.gov.cn/zhengce/zhengceku/202402/content_6930130.htm">国家税务总局公告2024年第2号</a>
+ */
 public class AnnualComprehensiveIncomeTax extends AbstractProgressiveTax {
 
     public AnnualComprehensiveIncomeTax() {

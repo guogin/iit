@@ -21,10 +21,9 @@ public class DummyProcedure implements Procedure {
     }
 
     @Override
-    public List<DiagnosticMessage> explain() {
+    public TraceLog explain() {
         DiagnosticMessage message = new DiagnosticMessage("Dummy Procedure, amount = {0}", MoneyUtil.format(this.amount));
-        List<DiagnosticMessage> messages = new ArrayList<>();
-        messages.add(message);
-        return messages;
+        TraceLog traceLog = TraceLog.builder().footerMessage(message).build();
+        return traceLog;
     }
 }

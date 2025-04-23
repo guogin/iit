@@ -5,20 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/DiagnosticMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/Procedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/SubTotalProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxAmountProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxBaseProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableAmount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/DiagnosticMessageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/DummyProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/SubTotalProcedureTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusAssessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxableIncomeAssessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceLogJsonConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceLogVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TraceLogJsonConverterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/ProgressiveTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/ProgressiveTax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/util/MoneyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/util/MoneyUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeTax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusTax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/Procedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/Procedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/SubTotalProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/SubTotalProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxAmountProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxAmountProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxBaseProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxBaseProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableAmount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/DummyProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/DummyProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/SubTotalProcedureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/SubTotalProcedureTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.All in iit.executor": "Run",
+    "JUnit.All in iit.executor": "Debug",
     "JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -113,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744866486096</updated>
       <workItem from="1744866487179" duration="13541000" />
-      <workItem from="1744953201609" duration="30024000" />
+      <workItem from="1744953201609" duration="51460000" />
     </task>
     <servers />
   </component>

@@ -9,6 +9,9 @@ import java.util.function.UnaryOperator;
 
 import static com.yahaha.iit.util.MoneyUtil.toAmount;
 
+/**
+ * @Reference <a href="https://www.gov.cn/zhengce/zhengceku/202308/content_6900595.htm">财政部 税务总局公告2023年第30号</a>
+ */
 public class AnnualOneTimeBonusTax extends AbstractProgressiveTax {
     public AnnualOneTimeBonusTax() {
         super();

@@ -33,10 +33,13 @@ public class SubTotalProcedureTest {
 
         SubTotalProcedure subtotalProcedure = new SubTotalProcedure("Test", dummyProcedures);
 
-        List<DiagnosticMessage> messages = subtotalProcedure.explain();
-        assertThat(messages).hasSize(4);
-        assertThat(messages.get(0).getMessage()).contains("¥").contains("1.00");
-        assertThat(messages.get(1).getMessage()).contains("¥").contains("100.00");
-        assertThat(messages.get(3).getMessage()).contains("¥").contains("124.50");
+        TraceLog traceLog = subtotalProcedure.explain();
+        List<TraceLog> subTraceLogs = traceLog.getSubTraceLogs();
+
+        assertThat(subTraceLogs).hasSize(3);
+        assertThat(subTraceLogs.get(0).getFooterMessage().getMessage()).contains("¥").contains("1.00");
+        assertThat(subTraceLogs.get(1).getFooterMessage().getMessage()).contains("¥").contains("100.00");
+        assertThat(subTraceLogs.get(2).getFooterMessage().getMessage()).contains("¥").contains("23.50");
+        assertThat(traceLog.getFooterMessage().getMessage()).contains("¥").contains("124.50");
     }
 }

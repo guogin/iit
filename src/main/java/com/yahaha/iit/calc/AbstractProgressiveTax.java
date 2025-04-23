@@ -34,7 +34,8 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
         traceLogs.add(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", index, taxRateInPercentage));
         traceLogs.add(new DiagnosticMessage("计算税额时，扣除速算扣除数{0}", bracket.getRapidCalculationDeduction()));
         traceLogs.add(new DiagnosticMessage("最终税额为{0}", MoneyUtil.format(taxAmount)));
-        TraceableAmount traceableAmount = new TraceableAmount(taxAmount, traceLogs);
+        TraceLog traceLog = TraceLog.builder().bodyMessages(traceLogs).build();
+        TraceableAmount traceableAmount = new TraceableAmount(taxAmount, traceLog);
 
         return traceableAmount;
     }

@@ -6,6 +6,7 @@ import lombok.*;
 import javax.money.MonetaryAmount;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Getter
@@ -25,15 +26,22 @@ public class SubTotalProcedure implements Procedure {
     }
 
     @Override
-    public List<DiagnosticMessage> explain() {
-        List<DiagnosticMessage> messages = subProcedures.stream()
+    public TraceLog explain() {
+        List<TraceLog> subTraceLogs = subProcedures.stream()
                 .map(Procedure::explain)
-                .reduce(new ArrayList<>(), (a, b) -> { a.addAll(b); return a; });
+                .collect(Collectors.toList());
 
-        messages.add(new DiagnosticMessage("{0}: {1}",
-                this.getDescription(),
-                MoneyUtil.format(this.execute())));
+        DiagnosticMessage headerMessage = new DiagnosticMessage(this.getDescription());
+        DiagnosticMessage footerMessage = new DiagnosticMessage("{0}: {1}",
+                                                                this.getDescription(),
+                                                                MoneyUtil.format(this.execute()));
 
-        return messages;
+        TraceLog traceLog = TraceLog.builder()
+                .headerMessage(headerMessage)
+                .subTraceLogs(subTraceLogs)
+                .footerMessage(footerMessage)
+                .build();
+
+        return traceLog;
     }
 }
