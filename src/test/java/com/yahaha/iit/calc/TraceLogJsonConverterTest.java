@@ -15,7 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TraceLogJsonConverterTest {
     private TraceLog traceLog;
-    private TraceLogJsonConverter traceLogJsonConverter;
 
     @BeforeEach
     void setUp() {
@@ -63,14 +62,11 @@ public class TraceLogJsonConverterTest {
         TraceLog traceLog1 = TraceLog.builder().headerMessage(header1).subTraceLogs(subLog1).footerMessage(footer1).build();
 
         this.traceLog = traceLog1;
-
-        this.traceLogJsonConverter = new TraceLogJsonConverter();
     }
 
     @Test
     void when_convert_traceLog_to_json_then_return_json() throws Exception {
-        traceLog.traverse(this.traceLogJsonConverter);
-        String json = traceLogJsonConverter.getJson();
+        String json = TraceLogJsonConverter.convert(this.traceLog);
 
         ObjectMapper objectMapper = JsonMapper.builder().enable(JsonReadFeature.ALLOW_TRAILING_COMMA).build();
         Map<String, Object> objectMap = objectMapper.readValue(json, new TypeReference<Map<String, Object>>() {});
