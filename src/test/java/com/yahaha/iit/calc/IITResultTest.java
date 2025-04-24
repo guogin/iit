@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import javax.money.MonetaryAmount;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,7 +22,8 @@ public class IITResultTest {
         TaxItem item1 = TaxItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
         TaxItem item2 = TaxItem.builder().taxAmount(TWO_THOUSAND_CNY).build();
 
-        IITResult result = IITResult.of(item1, item2);
+        IITResult result = new IITResult();
+        result.setItems(Arrays.asList(item1, item2));
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(THREE_THOUSAND_CNY);
     }
@@ -31,7 +33,8 @@ public class IITResultTest {
         TaxItem item1 = TaxItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
         TaxItem item2 = TaxItem.builder().build();
 
-        IITResult result = IITResult.of(item1, item2);
+        IITResult result = new IITResult();
+        result.setItems(Arrays.asList(item1, item2));
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(ONE_THOUSAND_CNY);
     }

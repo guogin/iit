@@ -3,26 +3,30 @@ package com.yahaha.iit.calc;
 import com.yahaha.iit.util.MoneyUtil;
 
 import javax.money.MonetaryAmount;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class IITCalculatorImpl2024 implements IITCalculator {
     @Override
     public IITResult calculate(IITRequest request) {
-        IITResult result = new IITResult();
+        List<TaxItem> items = new ArrayList<>();
 
         MonetaryAmount taxableAnnualIncome = determineTaxableAnnualComprehensiveIncome(request);
         ProgressiveTax annualComprehensiveIncomeTax = new AnnualComprehensiveIncomeTax();
         MonetaryAmount taxAmountForAnnualIncome = annualComprehensiveIncomeTax.calculate(taxableAnnualIncome).getAmount();
-        result.addItem(TaxItem.builder().taxBaseAmount(taxableAnnualIncome).taxAmount(taxAmountForAnnualIncome).build());
+        items.add(TaxItem.builder().taxBaseAmount(taxableAnnualIncome).taxAmount(taxAmountForAnnualIncome).build());
 
         if (request.getBonusTaxationOption() == BonusTaxationOption.ONE_TIME_TAXATION) {
             MonetaryAmount taxableAnnualBonus = request.getAnnualOneTimeBonus();
             ProgressiveTax annualOneTimeBonusTax = new AnnualOneTimeBonusTax();
             MonetaryAmount taxAmountForAnnualBonus = annualOneTimeBonusTax.calculate(taxableAnnualBonus).getAmount();
-            result.addItem(TaxItem.builder().taxBaseAmount(taxableAnnualBonus).taxAmount(taxAmountForAnnualBonus).build());
+            items.add(TaxItem.builder().taxBaseAmount(taxableAnnualBonus).taxAmount(taxAmountForAnnualBonus).build());
         }
 
+        IITResult result = new IITResult();
+        result.setItems(items);
         return result;
     }
 
