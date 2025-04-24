@@ -9,22 +9,21 @@ import java.util.Map;
 public class IITCalculatorImpl2024 implements IITCalculator {
     @Override
     public IITResult calculate(IITRequest request) {
+        IITResult result = new IITResult();
+
         MonetaryAmount taxableAnnualIncome = determineTaxableAnnualComprehensiveIncome(request);
         ProgressiveTax annualComprehensiveIncomeTax = new AnnualComprehensiveIncomeTax();
         MonetaryAmount taxAmountForAnnualIncome = annualComprehensiveIncomeTax.calculate(taxableAnnualIncome).getAmount();
+        result.addItem(TaxItem.builder().taxBaseAmount(taxableAnnualIncome).taxAmount(taxAmountForAnnualIncome).build());
 
-        MonetaryAmount taxableAnnualBonus = request.getAnnualOneTimeBonus();
-        MonetaryAmount taxAmountForAnnualBonus = MoneyUtil.ZERO;
         if (request.getBonusTaxationOption() == BonusTaxationOption.ONE_TIME_TAXATION) {
+            MonetaryAmount taxableAnnualBonus = request.getAnnualOneTimeBonus();
             ProgressiveTax annualOneTimeBonusTax = new AnnualOneTimeBonusTax();
-            taxAmountForAnnualBonus = annualOneTimeBonusTax.calculate(taxableAnnualBonus).getAmount();
+            MonetaryAmount taxAmountForAnnualBonus = annualOneTimeBonusTax.calculate(taxableAnnualBonus).getAmount();
+            result.addItem(TaxItem.builder().taxBaseAmount(taxableAnnualBonus).taxAmount(taxAmountForAnnualBonus).build());
         }
-        return IITResult.builder()
-                .taxBaseForAnnualIncome(taxableAnnualIncome)
-                .taxAmountForAnnualIncome(taxAmountForAnnualIncome)
-                .taxBaseForAnnualBonus(taxableAnnualBonus)
-                .taxAmountForAnnualBonus(taxAmountForAnnualBonus)
-                .build();
+
+        return result;
     }
 
     private MonetaryAmount determineTaxableAnnualComprehensiveIncome(IITRequest request) {

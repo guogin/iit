@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITResultTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITResultTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.All in iit.executor": "Run",
+    "JUnit.IITResultTest.executor": "Run",
     "JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -70,6 +74,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IITResultTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="iit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yahaha.iit.calc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yahaha.iit.calc" />
+      <option name="MAIN_CLASS_NAME" value="com.yahaha.iit.calc.IITResultTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="iit" />
       <extension name="coverage">
@@ -89,6 +108,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in iit" />
+        <item itemvalue="JUnit.IITResultTest" />
         <item itemvalue="JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured" />
       </list>
     </recent_temporary>
@@ -113,6 +133,7 @@
       <workItem from="1744953201609" duration="51799000" />
       <workItem from="1745422661532" duration="149000" />
       <workItem from="1745423775711" duration="1186000" />
+      <workItem from="1745461984963" duration="4468000" />
     </task>
     <servers />
   </component>
