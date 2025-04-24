@@ -15,29 +15,22 @@ import static com.yahaha.iit.util.MoneyUtil.ZERO;
 @EqualsAndHashCode
 @ToString
 public class IITResult {
-    private List<TaxItem> items;
+    private List<TraceableTaxCalculationResultItem> items;
     private TraceLog traceLog;
 
     private IITResult() {
     }
 
-    public static IITResult of(TaxItem... items) {
+    public static IITResult of(TraceableTaxCalculationResultItem... items) {
         IITResult result = new IITResult();
         result.items = Arrays.asList(items);
         result.traceLog = TraceLog.builder()
-                .subTraceLogs(result.items.stream().map(TaxItem::getTraceLog).collect(Collectors.toList()))
+                .subTraceLogs(result.items.stream().map(TraceableTaxCalculationResultItem::getTraceLog).collect(Collectors.toList()))
                 .build();
         return result;
     }
 
-    public static IITResult create(List<TaxItem> items, TraceLog traceLog) {
-        IITResult result = new IITResult();
-        result.items = items;
-        result.traceLog = traceLog;
-        return result;
-    }
-
     public MonetaryAmount getTotalTaxAmount() {
-        return items.stream().map(TaxItem::getTaxAmount).reduce(ZERO, MonetaryAmount::add);
+        return items.stream().map(TraceableTaxCalculationResultItem::getTaxAmount).reduce(ZERO, MonetaryAmount::add);
     }
 }

@@ -18,8 +18,8 @@ public class IITResultTest {
 
     @Test
     void when_getTotalTaxAmount_should_return_total() {
-        TaxItem item1 = TaxItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
-        TaxItem item2 = TaxItem.builder().taxAmount(TWO_THOUSAND_CNY).build();
+        TraceableTaxCalculationResultItem item1 = TraceableTaxCalculationResultItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
+        TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().taxAmount(TWO_THOUSAND_CNY).build();
 
         IITResult result = IITResult.of(item1, item2);
 
@@ -28,8 +28,8 @@ public class IITResultTest {
 
     @Test
     void when_some_is_null_getTotalTaxAmount_should_return_total() {
-        TaxItem item1 = TaxItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
-        TaxItem item2 = TaxItem.builder().build();
+        TraceableTaxCalculationResultItem item1 = TraceableTaxCalculationResultItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
+        TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().build();
 
         IITResult result = IITResult.of(item1, item2);
 

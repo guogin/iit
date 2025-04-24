@@ -1,19 +1,18 @@
 package com.yahaha.iit.calc;
 
-import com.yahaha.iit.util.MoneyUtil;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 
 import static com.yahaha.iit.util.MoneyUtil.ZERO;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @EqualsAndHashCode
 @ToString
-public class TaxItem {
+public class TraceableTaxCalculationResultItem {
     private MonetaryAmount taxBaseAmount;
     private MonetaryAmount taxAmount;
     private BigDecimal taxRate;

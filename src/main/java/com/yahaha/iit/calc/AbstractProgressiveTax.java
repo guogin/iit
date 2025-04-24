@@ -13,7 +13,7 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
     protected static final MonetaryAmount INFINITE_AMOUNT = MoneyUtil.toAmount(BigDecimal.valueOf(Double.MAX_VALUE));
 
     @Override
-    public TraceableAmount calculate(MonetaryAmount taxBaseAmount) {
+    public TraceableTaxCalculationResultItem calculate(MonetaryAmount taxBaseAmount) {
         UnaryOperator<MonetaryAmount> allocator = getIncomeAllocationFunction();
         MonetaryAmount allocatedTaxBaseAmount = allocator.apply(taxBaseAmount);
 
@@ -30,7 +30,7 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
 
         TraceLog traceLog = buildTraceLog(taxAmount, bracket);
 
-        return new TraceableAmount(taxAmount, traceLog);
+        return new TraceableTaxCalculationResultItem(taxBaseAmount, taxAmount, bracket.getTaxRate(), traceLog);
     }
 
     private TraceLog buildTraceLog(MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {

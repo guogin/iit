@@ -20,16 +20,14 @@ public class IITCalculatorImpl2024 implements IITCalculator {
 
         AnnualComprehensiveIncomeAssessor annualComprehensiveIncomeAssessor = new AnnualComprehensiveIncomeAssessor();
         AnnualComprehensiveIncomeTax annualComprehensiveIncomeTax = new AnnualComprehensiveIncomeTax();
-        TaxRoutine annualComprehensiveIncomeTaxRoutine = new TaxRoutineImpl("年度综合所得", annualComprehensiveIncomeAssessor, annualComprehensiveIncomeTax);
-        procedure.addRoutine(annualComprehensiveIncomeTaxRoutine);
-        procedure.setName("全年一次性奖金并入综合所得");
+        TaxRoutine annualComprehensiveIncomeTaxRoutine = new TaxRoutineImpl(annualComprehensiveIncomeAssessor, annualComprehensiveIncomeTax);
+        procedure.getRoutines().add(annualComprehensiveIncomeTaxRoutine);
 
         if (request.getBonusTaxationOption() == BonusTaxationOption.ONE_TIME_TAXATION) {
             AnnualOneTimeBonusAssessor annualOneTimeBonusAssessor = new AnnualOneTimeBonusAssessor();
             AnnualOneTimeBonusTax annualOneTimeBonusTax = new AnnualOneTimeBonusTax();
-            TaxRoutine annualOneTimeBonusTaxRoutine = new TaxRoutineImpl("全年一次性奖金", annualOneTimeBonusAssessor, annualOneTimeBonusTax);
-            procedure.addRoutine(annualOneTimeBonusTaxRoutine);
-            procedure.setName("全年一次性奖金单独计税");
+            TaxRoutine annualOneTimeBonusTaxRoutine = new TaxRoutineImpl(annualOneTimeBonusAssessor, annualOneTimeBonusTax);
+            procedure.getRoutines().add(annualOneTimeBonusTaxRoutine);
         }
 
         return procedure;

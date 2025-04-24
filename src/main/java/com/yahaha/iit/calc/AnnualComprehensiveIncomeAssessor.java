@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
     @Override
-    public TraceableAmount determineTaxableAmount(IITRequest request) {
+    public TraceableTaxBaseAmount determineTaxableAmount(IITRequest request) {
         //费用
         MonetaryAmount expenses = request.getServiceRemuneration()
                 .add(request.getAuthorsRemuneration())
@@ -66,6 +66,6 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
                 .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", taxableAnnualComprehensiveIncome))
                 .build();
 
-        return new TraceableAmount(taxableAnnualComprehensiveIncome, traceLog);
+        return new TraceableTaxBaseAmount(taxableAnnualComprehensiveIncome, traceLog);
     }
 }
