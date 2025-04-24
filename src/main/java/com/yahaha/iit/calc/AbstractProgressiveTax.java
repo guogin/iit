@@ -34,14 +34,14 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
     }
 
     private TraceLog buildTraceLog(MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
-        List<DiagnosticMessage> traceLogs = new ArrayList<>();
+        List<DiagnosticMessage> diagnosticMessages = new ArrayList<>();
         int index = brackets.indexOf(bracket) + 1;
         String taxRateInPercentage = MoneyUtil.formatPercentage(bracket.getTaxRate());
-        traceLogs.add(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", index, taxRateInPercentage));
-        traceLogs.add(new DiagnosticMessage("计算税额时，扣除速算扣除数{0}", bracket.getRapidCalculationDeduction()));
-        traceLogs.add(new DiagnosticMessage("最终税额为{0}", MoneyUtil.format(taxAmount)));
+        diagnosticMessages.add(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", index, taxRateInPercentage));
+        diagnosticMessages.add(new DiagnosticMessage("计算税额时，扣除速算扣除数{0}", bracket.getRapidCalculationDeduction()));
+        diagnosticMessages.add(new DiagnosticMessage("最终税额为{0}", MoneyUtil.format(taxAmount)));
 
-        return TraceLog.builder().bodyMessages(traceLogs).build();
+        return TraceLog.builder().bodyMessages(diagnosticMessages).build();
     }
 
     private ArrayList<ProgressiveTaxBracket> brackets = new ArrayList<>();

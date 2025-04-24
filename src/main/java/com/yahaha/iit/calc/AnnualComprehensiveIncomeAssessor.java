@@ -61,9 +61,9 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         deductions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage(k + ": {0}", v)));
 
         TraceLog traceLog = TraceLog.builder()
-                .headerMessage(new DiagnosticMessage("全年应纳税综合所得金额计算"))
+                .headerMessage(new DiagnosticMessage("全年应纳税综合所得额计算"))
                 .bodyMessages(bodyMessages)
-                .footerMessage(new DiagnosticMessage("全年应纳税所得额: {0}", taxableAnnualComprehensiveIncome))
+                .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", taxableAnnualComprehensiveIncome))
                 .build();
 
         return new TraceableAmount(taxableAnnualComprehensiveIncome, traceLog);
