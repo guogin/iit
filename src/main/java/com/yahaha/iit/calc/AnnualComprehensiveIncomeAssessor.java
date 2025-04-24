@@ -63,7 +63,7 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         TraceLog traceLog = TraceLog.builder()
                 .headerMessage(new DiagnosticMessage("全年应纳税综合所得额计算"))
                 .bodyMessages(bodyMessages)
-                .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", taxableAnnualComprehensiveIncome))
+                .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", MoneyUtil.format(taxableAnnualComprehensiveIncome)))
                 .build();
 
         return new TraceableTaxBaseAmount(taxableAnnualComprehensiveIncome, traceLog);
