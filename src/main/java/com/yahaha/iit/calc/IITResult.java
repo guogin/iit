@@ -1,5 +1,6 @@
 package com.yahaha.iit.calc;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -30,6 +31,7 @@ public class IITResult {
         return result;
     }
 
+    @JsonGetter
     public MonetaryAmount getTotalTaxAmount() {
         return items.stream().map(TraceableTaxCalculationResultItem::getTaxAmount).reduce(ZERO, MonetaryAmount::add);
     }

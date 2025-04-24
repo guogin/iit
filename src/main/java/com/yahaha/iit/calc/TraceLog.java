@@ -1,5 +1,6 @@
 package com.yahaha.iit.calc;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -23,9 +24,13 @@ import java.util.List;
 @ToString
 @Builder
 public class TraceLog {
+    @JsonProperty("header")
     DiagnosticMessage headerMessage;
+    @JsonProperty("body")
     List<DiagnosticMessage> bodyMessages;
+    @JsonProperty("subLogs")
     List<TraceLog> subTraceLogs;
+    @JsonProperty("footer")
     DiagnosticMessage footerMessage;
 
     public void traverse(TraceLogVisitor visitor) {

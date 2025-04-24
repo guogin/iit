@@ -1,6 +1,10 @@
 package com.yahaha.iit.calc;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.text.MessageFormat;
 
@@ -17,6 +21,7 @@ public class DiagnosticMessage {
         this.arguments = arguments;
     }
 
+    @JsonValue
     public String getMessage() {
         return MessageFormat.format(this.pattern, this.arguments);
     }
