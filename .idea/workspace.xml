@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/MonetaryAmountSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/DummyTraceLogProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusAssessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusAssessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxBaseAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxBaseAmount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxCalculationResultItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxCalculationResultItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITResultTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITResultTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TraceLogJsonConverterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TraceLogJsonConverterTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,7 +97,7 @@
       <workItem from="1745422661532" duration="149000" />
       <workItem from="1745423775711" duration="1186000" />
       <workItem from="1745461984963" duration="18055000" />
-      <workItem from="1745505521806" duration="6698000" />
+      <workItem from="1745505521806" duration="6856000" />
     </task>
     <servers />
   </component>

@@ -16,80 +16,80 @@ public class IITCalculatorTest {
 
     @Test
     void when_income_is_zero_then_tax_should_be_zero() {
-        IITRequest request = new IITRequest();
-        IITResult result = calculator.calculate(request);
+        TaxCalculationParameter request = new TaxCalculationParameter();
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.ZERO);
     }
 
     @Test
     void when_income_6k_monthly_and_10k_one_time_bonus_then_tax_should_be_660() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
         request.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
 
-        IITResult result = calculator.calculate(request);
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(660));
     }
 
     @Test
     void when_income_6k_monthly_and_10k_integrated_bonus_then_tax_should_be_660() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
         request.setAnnualWageIncome(6000 * 12);
         request.setAnnualOneTimeBonus(10000);
         request.setBonusTaxationOption(BonusTaxationOption.INTEGRATED_TAXATION);
 
-        IITResult result = calculator.calculate(request);
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(660));
     }
 
     @Test
     void when_income_10k_monthly_and_50k_one_time_bonus_then_tax_should_be_8270() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
         request.setAnnualWageIncome(10000 * 12);
         request.setAnnualOneTimeBonus(50000);
         request.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
 
-        IITResult result = calculator.calculate(request);
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(8270));
     }
 
     @Test
     void when_income_10k_monthly_and_50k_integrated_bonus_then_tax_should_be_8480() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
         request.setAnnualWageIncome(10000 * 12);
         request.setAnnualOneTimeBonus(50000);
         request.setBonusTaxationOption(BonusTaxationOption.INTEGRATED_TAXATION);
 
-        IITResult result = calculator.calculate(request);
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(8480));
     }
 
     @Test
     void when_income_18k_monthly_and_300k_one_time_bonus_then_tax_should_be_72870() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
         request.setAnnualWageIncome(18000 * 12);
         request.setAnnualOneTimeBonus(300000);
         request.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
 
-        IITResult result = calculator.calculate(request);
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(72870));
     }
 
     @Test
     void when_income_18k_monthly_and_300k_integrated_bonus_then_tax_should_be_83880() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
         request.setAnnualWageIncome(18000 * 12);
         request.setAnnualOneTimeBonus(300000);
         request.setBonusTaxationOption(BonusTaxationOption.INTEGRATED_TAXATION);
 
-        IITResult result = calculator.calculate(request);
+        TraceableTaxCalculationResult result = calculator.calculate(request);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(83880));
     }

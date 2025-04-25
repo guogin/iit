@@ -9,12 +9,10 @@ import org.junit.jupiter.api.Test;
 import javax.money.MonetaryAmount;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class IITResultTest {
+public class TraceableTaxCalculationResultTest {
     private static final MonetaryAmount ONE_THOUSAND_CNY = Money.of(1000, "CNY");
     private static final MonetaryAmount TWO_THOUSAND_CNY = Money.of(2000, "CNY");
     private static final MonetaryAmount THREE_THOUSAND_CNY = Money.of(3000, "CNY");
@@ -26,7 +24,7 @@ public class IITResultTest {
         TraceableTaxCalculationResultItem item1 = TraceableTaxCalculationResultItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
         TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().taxAmount(TWO_THOUSAND_CNY).build();
 
-        IITResult result = IITResult.of(item1, item2);
+        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(item1, item2);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(THREE_THOUSAND_CNY);
     }
@@ -36,7 +34,7 @@ public class IITResultTest {
         TraceableTaxCalculationResultItem item1 = TraceableTaxCalculationResultItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
         TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().build();
 
-        IITResult result = IITResult.of(item1, item2);
+        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(item1, item2);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(ONE_THOUSAND_CNY);
     }
@@ -54,7 +52,7 @@ public class IITResultTest {
                 .traceLog(DummyTraceLogProvider.createTraceLog13())
                 .build();
 
-        IITResult result = IITResult.of(item1, item2);
+        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(item1, item2);
 
         ObjectMapper objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule("MonetaryAmountSerializer",

@@ -1,5 +1,5 @@
 package com.yahaha.iit.calc;
 
 public interface IITCalculator {
-    IITResult calculate(IITRequest request);
+    TraceableTaxCalculationResult calculate(TaxCalculationParameter request);
 }

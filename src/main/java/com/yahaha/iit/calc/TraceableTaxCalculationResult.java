@@ -15,15 +15,15 @@ import static com.yahaha.iit.util.MoneyUtil.ZERO;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class IITResult {
+public class TraceableTaxCalculationResult {
     private List<TraceableTaxCalculationResultItem> items;
     private TraceLog traceLog;
 
-    private IITResult() {
+    private TraceableTaxCalculationResult() {
     }
 
-    public static IITResult of(TraceableTaxCalculationResultItem... items) {
-        IITResult result = new IITResult();
+    public static TraceableTaxCalculationResult of(TraceableTaxCalculationResultItem... items) {
+        TraceableTaxCalculationResult result = new TraceableTaxCalculationResult();
         result.items = Arrays.asList(items);
         result.traceLog = TraceLog.builder()
                 .subTraceLogs(result.items.stream().map(TraceableTaxCalculationResultItem::getTraceLog).collect(Collectors.toList()))

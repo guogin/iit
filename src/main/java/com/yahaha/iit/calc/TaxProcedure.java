@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 public class TaxProcedure {
     private List<TaxRoutine> routines = new ArrayList<>();
 
-    public IITResult execute(IITRequest request) {
+    public TraceableTaxCalculationResult execute(TaxCalculationParameter request) {
         List<TraceableTaxCalculationResultItem> taxCalculationResultItems = routines.stream()
                 .map(routine -> routine.execute(request))
                 .collect(Collectors.toList());
 
-        return IITResult.of(taxCalculationResultItems.toArray(new TraceableTaxCalculationResultItem[0]));
+        return TraceableTaxCalculationResult.of(taxCalculationResultItems.toArray(new TraceableTaxCalculationResultItem[0]));
     }
 }

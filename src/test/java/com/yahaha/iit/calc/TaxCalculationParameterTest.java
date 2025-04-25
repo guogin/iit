@@ -7,12 +7,12 @@ import javax.money.MonetaryAmount;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class IITRequestTest {
+public class TaxCalculationParameterTest {
     static MonetaryAmount ZERO = Money.of(0, "CNY");
 
     @Test
     void when_getAmount_should_never_be_null(){
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
 
         assertThat(request.getAnnualWageIncome()).isEqualTo(ZERO);
         assertThat(request.getAnnualOneTimeBonus()).isEqualTo(ZERO);
@@ -26,7 +26,7 @@ public class IITRequestTest {
 
     @Test
     void when_not_specified_then_getBonusTaxationMethod_should_have_default_value() {
-        IITRequest request = new IITRequest();
+        TaxCalculationParameter request = new TaxCalculationParameter();
 
         assertThat(request.getBonusTaxationOption()).isNotNull();
     }

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
     @Override
-    public TraceableTaxBaseAmount determineTaxableAmount(IITRequest request) {
+    public TraceableTaxBaseAmount determineTaxableAmount(TaxCalculationParameter request) {
         //费用
         MonetaryAmount expenses = request.getServiceRemuneration()
                 .add(request.getAuthorsRemuneration())

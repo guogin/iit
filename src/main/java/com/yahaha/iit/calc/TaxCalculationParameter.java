@@ -11,7 +11,7 @@ import static com.yahaha.iit.util.MoneyUtil.ZERO;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class IITRequest {
+public class TaxCalculationParameter {
     // Incomes
     private MonetaryAmount annualWageIncome; //年度工资收入
     private MonetaryAmount annualOneTimeBonus; //全年一次性奖金
