@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +101,7 @@
       <workItem from="1745461984963" duration="18055000" />
       <workItem from="1745505521806" duration="6856000" />
       <workItem from="1745539742759" duration="2336000" />
+      <workItem from="1745553789144" duration="142000" />
     </task>
     <servers />
   </component>
