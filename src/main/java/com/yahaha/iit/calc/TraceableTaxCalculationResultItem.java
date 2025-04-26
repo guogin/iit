@@ -1,6 +1,5 @@
 package com.yahaha.iit.calc;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.money.MonetaryAmount;
@@ -17,7 +16,6 @@ public class TraceableTaxCalculationResultItem {
     private MonetaryAmount taxBaseAmount;
     private MonetaryAmount taxAmount;
     private BigDecimal taxRate;
-    @JsonIgnore
     private TraceLog traceLog;
 
     public MonetaryAmount getTaxBaseAmount() {

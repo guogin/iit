@@ -1,6 +1,7 @@
 package com.yahaha.iit.calc;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -17,6 +18,7 @@ import static com.yahaha.iit.util.MoneyUtil.ZERO;
 @ToString
 public class TraceableTaxCalculationResult {
     private List<TraceableTaxCalculationResultItem> items;
+    @JsonIgnore
     private TraceLog traceLog;
 
     private TraceableTaxCalculationResult() {
