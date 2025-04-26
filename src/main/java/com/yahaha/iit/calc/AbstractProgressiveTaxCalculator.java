@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
-public abstract class AbstractProgressiveTax implements ProgressiveTax {
+public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator {
     protected static final MonetaryAmount INFINITE_AMOUNT = MoneyUtil.toAmount(BigDecimal.valueOf(Double.MAX_VALUE));
 
     @Override
@@ -55,7 +55,7 @@ public abstract class AbstractProgressiveTax implements ProgressiveTax {
         return UnaryOperator.identity();
     }
 
-    public AbstractProgressiveTax() {
+    public AbstractProgressiveTaxCalculator() {
         brackets = defineTaxBrackets();
         brackets.sort((o1, o2) -> o1.getToAmount().compareTo(o2.getToAmount()));
     }
