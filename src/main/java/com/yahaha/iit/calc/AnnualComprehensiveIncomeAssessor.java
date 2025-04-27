@@ -56,9 +56,9 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
 
         List<DiagnosticMessage> bodyMessages = new ArrayList<>();
         bodyMessages.add(new DiagnosticMessage("收入部分"));
-        additions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage(k + ": {0}", v)));
+        additions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage("{0}: {1}", k, MoneyUtil.format(v))));
         bodyMessages.add(new DiagnosticMessage("扣除部分"));
-        deductions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage(k + ": {0}", v)));
+        deductions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage("{0}: {1}", k, MoneyUtil.format(v))));
 
         TraceLog traceLog = TraceLog.builder()
                 .headerMessage(new DiagnosticMessage("计算全年应纳税综合所得额"))
