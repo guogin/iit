@@ -4,6 +4,7 @@ import com.yahaha.iit.util.MoneyUtil;
 
 import javax.money.MonetaryAmount;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
@@ -23,8 +24,8 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         // 减除费用
         MonetaryAmount deductibleExpenses = MoneyUtil.toAmount(60000);
 
-        Map<String, MonetaryAmount> additions = new HashMap<>();
-        Map<String, MonetaryAmount> deductions = new HashMap<>();
+        Map<String, MonetaryAmount> additions = new LinkedHashMap<>();
+        Map<String, MonetaryAmount> deductions = new LinkedHashMap<>();
 
         additions.put("年度工资收入", request.getAnnualWageIncome());
         additions.put("劳务报酬", request.getServiceRemuneration());
@@ -41,7 +42,7 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         deductions.put("专项附加扣除", request.getAdditionalSpecialDeductions());
         deductions.put("其他扣除项目", request.getOtherDeductions());
 
-        Map<String, MonetaryAmount> detailItems = new HashMap<>();
+        Map<String, MonetaryAmount> detailItems = new LinkedHashMap<>();
 
         additions.forEach((k, v) -> detailItems.put(k, v));
         deductions.forEach((k, v) -> detailItems.put(k, v.negate()));
@@ -52,9 +53,25 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
             taxableAnnualComprehensiveIncome = MoneyUtil.ZERO;
         }
 
-        HashMap<String, MonetaryAmount> diagnostics = new HashMap<>();
-        additions.forEach((k, v) -> diagnostics.put(k, v));
-        deductions.forEach((k, v) -> diagnostics.put("扣除：" + k, v.negate()));
+        TraceLog traceLog = buildTraceLog(additions, deductions, taxableAnnualComprehensiveIncome);
+
+        return new TraceableTaxBaseAmount(taxableAnnualComprehensiveIncome, traceLog);
+    }
+
+    private TraceLog buildTraceLog(Map<String, MonetaryAmount> additions,
+                                   Map<String, MonetaryAmount> deductions,
+                                   MonetaryAmount taxableAnnualComprehensiveIncome) {
+        Map<String, MonetaryAmount> diagnostics = new LinkedHashMap<>();
+        additions.forEach((k, v) -> {
+            if (!v.isZero()) {
+                diagnostics.put(k, v);
+            }
+        });
+        deductions.forEach((k, v) -> {
+            if (!v.isZero()) {
+                diagnostics.put("扣除：" + k, v.negate());
+            }
+        });
 
         TraceLog traceLog = TraceLog.builder()
                 .headerMessage(new DiagnosticMessage("计算全年应纳税综合所得额"))
@@ -62,6 +79,6 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
                 .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", MoneyUtil.format(taxableAnnualComprehensiveIncome)))
                 .build();
 
-        return new TraceableTaxBaseAmount(taxableAnnualComprehensiveIncome, traceLog);
+        return traceLog;
     }
 }
