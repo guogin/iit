@@ -3,9 +3,7 @@ package com.yahaha.iit.calc;
 import com.yahaha.iit.util.MoneyUtil;
 
 import javax.money.MonetaryAmount;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
@@ -54,15 +52,13 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
             taxableAnnualComprehensiveIncome = MoneyUtil.ZERO;
         }
 
-        List<DiagnosticMessage> bodyMessages = new ArrayList<>();
-        bodyMessages.add(new DiagnosticMessage("收入部分"));
-        additions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage("{0}: {1}", k, MoneyUtil.format(v))));
-        bodyMessages.add(new DiagnosticMessage("扣除部分"));
-        deductions.forEach((k, v) -> bodyMessages.add(new DiagnosticMessage("{0}: {1}", k, MoneyUtil.format(v))));
+        HashMap<String, MonetaryAmount> diagnostics = new HashMap<>();
+        additions.forEach((k, v) -> diagnostics.put(k, v));
+        deductions.forEach((k, v) -> diagnostics.put("扣除：" + k, v.negate()));
 
         TraceLog traceLog = TraceLog.builder()
                 .headerMessage(new DiagnosticMessage("计算全年应纳税综合所得额"))
-                .bodyMessages(bodyMessages)
+                .body(diagnostics)
                 .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", MoneyUtil.format(taxableAnnualComprehensiveIncome)))
                 .build();
 

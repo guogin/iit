@@ -5,7 +5,8 @@ import com.yahaha.iit.util.MoneyUtil;
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
@@ -28,22 +29,20 @@ public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator 
         MonetaryAmount taxAmount = taxBaseAmount.multiply(bracket.getTaxRate())
                 .subtract(bracket.getRapidCalculationDeduction());
 
-        TraceLog traceLog = buildTraceLog(taxAmount, bracket);
+        TraceLog traceLog = buildTraceLog(taxBaseAmount, taxAmount, bracket);
 
         return new TraceableTaxCalculationResultItem(taxBaseAmount, taxAmount, bracket.getTaxRate(), traceLog);
     }
 
-    private TraceLog buildTraceLog(MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
-        List<DiagnosticMessage> diagnosticMessages = new ArrayList<>();
-        int index = brackets.indexOf(bracket) + 1;
-        String taxRateInPercentage = MoneyUtil.formatPercentage(bracket.getTaxRate());
-        diagnosticMessages.add(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", index, taxRateInPercentage));
-        diagnosticMessages.add(new DiagnosticMessage("计算税额时，扣除速算扣除数{0}", MoneyUtil.format(bracket.getRapidCalculationDeduction())));
-        diagnosticMessages.add(new DiagnosticMessage("最终税额为{0}", MoneyUtil.format(taxAmount)));
+    private TraceLog buildTraceLog(MonetaryAmount taxBaseAmount, MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
+        Map<String, MonetaryAmount> diagnostics = new HashMap<>();
+        diagnostics.put("税基 x 税率 =", taxBaseAmount.multiply(bracket.getTaxRate()));
+        diagnostics.put("扣除速算扣除数", bracket.getRapidCalculationDeduction());
+        diagnostics.put("最终税额", taxAmount);
 
         return TraceLog.builder()
-                .headerMessage(new DiagnosticMessage("计算应纳税额"))
-                .bodyMessages(diagnosticMessages)
+                .headerMessage(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", brackets.indexOf(bracket) + 1, MoneyUtil.formatPercentage(bracket.getTaxRate())))
+                .body(diagnostics)
                 .footerMessage(new DiagnosticMessage("应纳税额: {0}", MoneyUtil.format(taxAmount)))
                 .build();
     }
