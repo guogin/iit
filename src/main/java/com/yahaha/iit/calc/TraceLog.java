@@ -32,20 +32,4 @@ public class TraceLog {
     List<TraceLog> subTraceLogs;
     @JsonProperty("footer")
     DiagnosticMessage footerMessage;
-
-    public void traverse(TraceLogVisitor visitor) {
-        visitor.start();
-        if (headerMessage != null) {
-            visitor.visitHeader(headerMessage);
-        }
-        if(subTraceLogs != null) {
-            visitor.visitSubNodes(subTraceLogs);
-        } else if (bodyMessages != null) {
-            visitor.visitBody(bodyMessages);
-        }
-        if (footerMessage != null) {
-            visitor.visitFooter(footerMessage);
-        }
-        visitor.end();
-    }
 }
