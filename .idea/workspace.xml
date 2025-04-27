@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxBaseAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxBaseAmount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxCalculationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxCalculationResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxCalculationResultItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceableTaxCalculationResultItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,8 @@
       <workItem from="1745596102397" duration="134000" />
       <workItem from="1745596550890" duration="131000" />
       <workItem from="1745677514517" duration="4706000" />
-      <workItem from="1745683934500" duration="148000" />
+      <workItem from="1745683934500" duration="195000" />
+      <workItem from="1745731108507" duration="10000" />
     </task>
     <servers />
   </component>
