@@ -37,7 +37,7 @@ public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator 
     private TraceLog buildTraceLog(MonetaryAmount taxBaseAmount, MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
         Map<String, MonetaryAmount> diagnostics = new HashMap<>();
         diagnostics.put("税基 x 税率 =", taxBaseAmount.multiply(bracket.getTaxRate()));
-        diagnostics.put("扣除速算扣除数", bracket.getRapidCalculationDeduction());
+        diagnostics.put("扣除：速算扣除数", bracket.getRapidCalculationDeduction().negate());
         diagnostics.put("最终税额", taxAmount);
 
         return TraceLog.builder()
