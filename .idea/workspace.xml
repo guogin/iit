@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTaxCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTaxCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +38,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.All in iit.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.All in iit.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.IITResultTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -112,6 +114,8 @@
       <workItem from="1745732353223" duration="1672000" />
       <workItem from="1745764799738" duration="1289000" />
       <workItem from="1745766559794" duration="174000" />
+      <workItem from="1746025527999" duration="101000" />
+      <workItem from="1746025700252" duration="36000" />
     </task>
     <servers />
   </component>

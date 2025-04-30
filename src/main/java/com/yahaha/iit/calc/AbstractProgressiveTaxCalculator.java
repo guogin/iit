@@ -5,7 +5,7 @@ import com.yahaha.iit.util.MoneyUtil;
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
@@ -35,7 +35,7 @@ public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator 
     }
 
     private TraceLog buildTraceLog(MonetaryAmount taxBaseAmount, MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
-        Map<String, MonetaryAmount> diagnostics = new HashMap<>();
+        Map<String, MonetaryAmount> diagnostics = new LinkedHashMap<>();
         diagnostics.put("税基 x 税率 =", taxBaseAmount.multiply(bracket.getTaxRate()));
         diagnostics.put("扣除：速算扣除数", bracket.getRapidCalculationDeduction().negate());
         diagnostics.put("最终税额", taxAmount);
