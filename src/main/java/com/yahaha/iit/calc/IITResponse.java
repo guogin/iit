@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Data
 public class IITResponse {
-    private Map<String, TraceableTaxCalculationResult> results;
+    private Map<BonusTaxationOption, TraceableTaxCalculationResult> results;
 }

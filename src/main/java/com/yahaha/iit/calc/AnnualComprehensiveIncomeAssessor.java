@@ -3,7 +3,9 @@ package com.yahaha.iit.calc;
 import com.yahaha.iit.util.MoneyUtil;
 
 import javax.money.MonetaryAmount;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
@@ -41,12 +43,13 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         deductions.put("专项附加扣除", request.getAdditionalSpecialDeductions());
         deductions.put("其他扣除项目", request.getOtherDeductions());
 
-        Map<String, MonetaryAmount> detailItems = new LinkedHashMap<>();
+        List<TraceItem> detailItems = new ArrayList<>();
 
-        additions.forEach((k, v) -> detailItems.put(k, v));
-        deductions.forEach((k, v) -> detailItems.put(k, v.negate()));
+        additions.forEach((k, v) -> detailItems.add(new TraceItem(k, v)));
+        deductions.forEach((k, v) -> detailItems.add(new TraceItem(k, v.negate())));
 
-        MonetaryAmount taxableAnnualComprehensiveIncome = detailItems.values().stream()
+        MonetaryAmount taxableAnnualComprehensiveIncome = detailItems.stream()
+            .map(TraceItem::getAmount)
                 .reduce(MoneyUtil.ZERO, MonetaryAmount::add);
         if (taxableAnnualComprehensiveIncome.isLessThan(MoneyUtil.ZERO)) {
             taxableAnnualComprehensiveIncome = MoneyUtil.ZERO;
@@ -60,15 +63,15 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
     private TraceLog buildTraceLog(Map<String, MonetaryAmount> additions,
                                    Map<String, MonetaryAmount> deductions,
                                    MonetaryAmount taxableAnnualComprehensiveIncome) {
-        Map<String, MonetaryAmount> diagnostics = new LinkedHashMap<>();
+        List<TraceItem> diagnostics = new ArrayList<>();
         additions.forEach((k, v) -> {
             if (!v.isZero()) {
-                diagnostics.put(k, v);
+                diagnostics.add(new TraceItem(k, v));
             }
         });
         deductions.forEach((k, v) -> {
             if (!v.isZero()) {
-                diagnostics.put("扣除：" + k, v.negate());
+                diagnostics.add(new TraceItem("扣除：" + k, v.negate()));
             }
         });
 

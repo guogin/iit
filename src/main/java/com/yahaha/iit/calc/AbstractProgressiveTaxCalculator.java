@@ -5,8 +5,8 @@ import com.yahaha.iit.util.MoneyUtil;
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
@@ -35,10 +35,10 @@ public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator 
     }
 
     private TraceLog buildTraceLog(MonetaryAmount taxBaseAmount, MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
-        Map<String, MonetaryAmount> diagnostics = new LinkedHashMap<>();
-        diagnostics.put("税基 x 税率 =", taxBaseAmount.multiply(bracket.getTaxRate()));
-        diagnostics.put("扣除：速算扣除数", bracket.getRapidCalculationDeduction().negate());
-        diagnostics.put("最终税额", taxAmount);
+        List<TraceItem> diagnostics = new ArrayList<>();
+        diagnostics.add(new TraceItem("税基 x 税率 =", taxBaseAmount.multiply(bracket.getTaxRate())));
+        diagnostics.add(new TraceItem("扣除：速算扣除数", bracket.getRapidCalculationDeduction().negate()));
+        diagnostics.add(new TraceItem("最终税额", taxAmount));
 
         return TraceLog.builder()
                 .headerMessage(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", brackets.indexOf(bracket) + 1, MoneyUtil.formatPercentage(bracket.getTaxRate())))

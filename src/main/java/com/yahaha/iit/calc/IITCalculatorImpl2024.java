@@ -1,15 +1,27 @@
 package com.yahaha.iit.calc;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class IITCalculatorImpl2024 implements IITCalculator {
+    private final TaxProcedureFactory taxProcedureFactory;
+    private final IITRequestMapper requestMapper;
+
+    public IITCalculatorImpl2024() {
+        this(new TaxProcedureFactory2024(), new IITRequestMapper());
+    }
+
+    public IITCalculatorImpl2024(TaxProcedureFactory taxProcedureFactory, IITRequestMapper requestMapper) {
+        this.taxProcedureFactory = taxProcedureFactory;
+        this.requestMapper = requestMapper;
+    }
+
     @Override
     public IITResponse simulate(IITRequest request) {
-        TaxCalculationParameter parameterOneTime = mapToParameter(request, BonusTaxationOption.ONE_TIME_TAXATION);
+        TaxCalculationParameter parameterOneTime = requestMapper.toParameter(request, BonusTaxationOption.ONE_TIME_TAXATION);
         TraceableTaxCalculationResult resultOneTime = calculate(parameterOneTime);
 
-        TaxCalculationParameter parameterIntegrated = mapToParameter(request, BonusTaxationOption.INTEGRATED_TAXATION);
+        TaxCalculationParameter parameterIntegrated = requestMapper.toParameter(request, BonusTaxationOption.INTEGRATED_TAXATION);
         TraceableTaxCalculationResult resultIntegrated = calculate(parameterIntegrated);
 
         return mapToResponse(resultOneTime, resultIntegrated);
@@ -17,52 +29,17 @@ public class IITCalculatorImpl2024 implements IITCalculator {
 
     @Override
     public TraceableTaxCalculationResult calculate(TaxCalculationParameter parameter) {
-        TaxProcedure procedure = determineTaxProcedure(parameter);
+        TaxProcedure procedure = taxProcedureFactory.create(parameter);
         return procedure.execute(parameter);
-    }
-
-    private TaxProcedure determineTaxProcedure(TaxCalculationParameter request) {
-        TaxProcedure procedure = new TaxProcedure();
-
-        AnnualComprehensiveIncomeAssessor annualComprehensiveIncomeAssessor = new AnnualComprehensiveIncomeAssessor();
-        AnnualComprehensiveIncomeTaxCalculator annualComprehensiveIncomeTax = new AnnualComprehensiveIncomeTaxCalculator();
-        TaxRoutine annualComprehensiveIncomeTaxRoutine = new TaxRoutineImpl(annualComprehensiveIncomeAssessor, annualComprehensiveIncomeTax);
-        procedure.getRoutines().add(annualComprehensiveIncomeTaxRoutine);
-
-        if (request.getBonusTaxationOption() == BonusTaxationOption.ONE_TIME_TAXATION) {
-            AnnualOneTimeBonusAssessor annualOneTimeBonusAssessor = new AnnualOneTimeBonusAssessor();
-            AnnualOneTimeBonusTaxCalculator annualOneTimeBonusTax = new AnnualOneTimeBonusTaxCalculator();
-            TaxRoutine annualOneTimeBonusTaxRoutine = new TaxRoutineImpl(annualOneTimeBonusAssessor, annualOneTimeBonusTax);
-            procedure.getRoutines().add(annualOneTimeBonusTaxRoutine);
-        }
-
-        return procedure;
-    }
-
-    private TaxCalculationParameter mapToParameter(IITRequest request, BonusTaxationOption bonusTaxationOption) {
-        TaxCalculationParameter parameter = new TaxCalculationParameter();
-        parameter.setBonusTaxationOption(bonusTaxationOption);
-
-        // Copy other fields
-        parameter.setAnnualWageIncome(request.getAnnualWageIncome());
-        parameter.setAnnualOneTimeBonus(request.getAnnualOneTimeBonus());
-        parameter.setAuthorsRemuneration(request.getAuthorsRemuneration());
-        parameter.setRoyaltyFees(request.getRoyaltyFees());
-        parameter.setServiceRemuneration(request.getServiceRemuneration());
-        parameter.setSpecialDeductions(request.getSpecialDeductions());
-        parameter.setAdditionalSpecialDeductions(request.getAdditionalSpecialDeductions());
-        parameter.setOtherDeductions(request.getOtherDeductions());
-
-        return parameter;
     }
 
     private IITResponse mapToResponse(TraceableTaxCalculationResult resultOfOneTimeTaxation,
                                       TraceableTaxCalculationResult resultOfIntegratedTaxation) {
         IITResponse response = new IITResponse();
-        Map<String, TraceableTaxCalculationResult> resultMap = new HashMap<>();
+        Map<BonusTaxationOption, TraceableTaxCalculationResult> resultMap = new EnumMap<>(BonusTaxationOption.class);
 
-        resultMap.put(ONE_TIME_TAXATION, resultOfOneTimeTaxation);
-        resultMap.put(INTEGRATED_TAXATION, resultOfIntegratedTaxation);
+        resultMap.put(BonusTaxationOption.ONE_TIME_TAXATION, resultOfOneTimeTaxation);
+        resultMap.put(BonusTaxationOption.INTEGRATED_TAXATION, resultOfIntegratedTaxation);
 
         response.setResults(resultMap);
         return response;

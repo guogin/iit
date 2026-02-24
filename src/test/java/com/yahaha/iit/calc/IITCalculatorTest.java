@@ -104,14 +104,14 @@ public class IITCalculatorTest {
         request.setAnnualOneTimeBonus(BigDecimal.valueOf(300000));
 
         IITResponse response = calculator.simulate(request);
-        Map<String, TraceableTaxCalculationResult> resultMap = response.getResults();
+        Map<BonusTaxationOption, TraceableTaxCalculationResult> resultMap = response.getResults();
 
         assertThat(resultMap).hasSize(2);
-        assertThat(resultMap).containsKey(IITCalculator.ONE_TIME_TAXATION);
-        assertThat(resultMap).containsKey(IITCalculator.INTEGRATED_TAXATION);
+        assertThat(resultMap).containsKey(BonusTaxationOption.ONE_TIME_TAXATION);
+        assertThat(resultMap).containsKey(BonusTaxationOption.INTEGRATED_TAXATION);
 
-        TraceableTaxCalculationResult result1 = resultMap.get(IITCalculator.ONE_TIME_TAXATION);
-        TraceableTaxCalculationResult result2 = resultMap.get(IITCalculator.INTEGRATED_TAXATION);
+        TraceableTaxCalculationResult result1 = resultMap.get(BonusTaxationOption.ONE_TIME_TAXATION);
+        TraceableTaxCalculationResult result2 = resultMap.get(BonusTaxationOption.INTEGRATED_TAXATION);
 
         assertThat(result1.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(72870));
         assertThat(result2.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(83880));

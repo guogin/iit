@@ -1,18 +1,25 @@
 package com.yahaha.iit.calc;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
-@Getter
-@Setter
 public class TaxProcedure {
-    private List<TaxRoutine> routines = new ArrayList<>();
+    private final List<TaxRoutine> routines;
+
+    public TaxProcedure(List<TaxRoutine> routines) {
+        this.routines = new ArrayList<>(routines);
+    }
+
+    public void addRoutine(TaxRoutine routine) {
+        routines.add(routine);
+    }
+
+    public List<TaxRoutine> getRoutines() {
+        return Collections.unmodifiableList(routines);
+    }
 
     public TraceableTaxCalculationResult execute(TaxCalculationParameter request) {
         List<TraceableTaxCalculationResultItem> taxCalculationResultItems = routines.stream()
