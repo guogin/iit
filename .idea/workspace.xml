@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="" />
+    <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +36,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.All in iit.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in iit.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.IITResultTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -125,6 +127,9 @@
       <workItem from="1771925598846" duration="839000" />
       <workItem from="1771927332939" duration="116000" />
       <workItem from="1771927775648" duration="6000" />
+      <workItem from="1771985845261" duration="9070000" />
+      <workItem from="1772007127464" duration="3346000" />
+      <workItem from="1772010587668" duration="176000" />
     </task>
     <servers />
   </component>
@@ -132,6 +137,20 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.yahaha.iit.calc.TraceableTaxCalculationResultItem" memberName="traceLog" />

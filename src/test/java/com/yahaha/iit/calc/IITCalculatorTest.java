@@ -115,5 +115,8 @@ public class IITCalculatorTest {
 
         assertThat(result1.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(72870));
         assertThat(result2.getTotalTaxAmount()).isEqualTo(MoneyUtil.toAmount(83880));
+
+        assertThat(result1.getItems()).containsKeys(RoutineCode.INCOME_TAX, RoutineCode.BONUS_TAX);
+        assertThat(result2.getItems()).containsKeys(RoutineCode.INTEGRATED_INCOME_TAX);
     }
 }

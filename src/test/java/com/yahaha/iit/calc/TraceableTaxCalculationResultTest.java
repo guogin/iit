@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import javax.money.MonetaryAmount;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,7 +26,10 @@ public class TraceableTaxCalculationResultTest {
         TraceableTaxCalculationResultItem item1 = TraceableTaxCalculationResultItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
         TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().taxAmount(TWO_THOUSAND_CNY).build();
 
-        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(item1, item2);
+        Map<RoutineCode, TraceableTaxCalculationResultItem> items = new LinkedHashMap<>();
+        items.put(RoutineCode.INCOME_TAX, item1);
+        items.put(RoutineCode.BONUS_TAX, item2);
+        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(items);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(THREE_THOUSAND_CNY);
     }
@@ -34,7 +39,10 @@ public class TraceableTaxCalculationResultTest {
         TraceableTaxCalculationResultItem item1 = TraceableTaxCalculationResultItem.builder().taxAmount(ONE_THOUSAND_CNY).build();
         TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().build();
 
-        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(item1, item2);
+        Map<RoutineCode, TraceableTaxCalculationResultItem> items = new LinkedHashMap<>();
+        items.put(RoutineCode.INCOME_TAX, item1);
+        items.put(RoutineCode.BONUS_TAX, item2);
+        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(items);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(ONE_THOUSAND_CNY);
     }
@@ -52,7 +60,10 @@ public class TraceableTaxCalculationResultTest {
                 .traceLog(DummyTraceLogProvider.createTraceLog13())
                 .build();
 
-        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(item1, item2);
+        Map<RoutineCode, TraceableTaxCalculationResultItem> items = new LinkedHashMap<>();
+        items.put(RoutineCode.INCOME_TAX, item1);
+        items.put(RoutineCode.BONUS_TAX, item2);
+        TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(items);
 
         ObjectMapper objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule("MonetaryAmountSerializer",

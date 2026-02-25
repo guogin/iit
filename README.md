@@ -12,7 +12,7 @@ The JAR will be created under `target/`.
 
 ## Usage
 
-Use `IITCalculatorImpl2024` to calculate or simulate tax. The `simulate` API returns two calculation results (one-time bonus taxation and integrated taxation), each including the final tax amount and a trace of the calculation process via `TraceableTaxCalculationResult`.
+Use `IITCalculatorImpl2024` to calculate or simulate tax. The `simulate` API returns two calculation results (one-time bonus taxation and integrated taxation). Each `TraceableTaxCalculationResult` contains a map keyed by `RoutineCode` so you can see which tax portion each item represents.
 
 ### Example
 
@@ -22,6 +22,8 @@ import com.yahaha.iit.calc.IITRequest;
 import com.yahaha.iit.calc.IITResponse;
 import com.yahaha.iit.calc.BonusTaxationOption;
 import com.yahaha.iit.calc.TraceableTaxCalculationResult;
+import com.yahaha.iit.calc.TraceableTaxCalculationResultItem;
+import com.yahaha.iit.calc.RoutineCode;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -43,9 +45,12 @@ public class MyIITSimulator {
         System.out.println("One-time tax: " + oneTime.getTotalTaxAmount());
         System.out.println("Integrated tax: " + integrated.getTotalTaxAmount());
 
-        // Each TraceableTaxCalculationResult also contains the calculation steps.
-        System.out.println(oneTime.getItems());
-        System.out.println(integrated.getItems());
+        Map<RoutineCode, TraceableTaxCalculationResultItem> oneTimeItems = oneTime.getItems();
+        TraceableTaxCalculationResultItem incomeTax = oneTimeItems.get(RoutineCode.INCOME_TAX);
+        TraceableTaxCalculationResultItem bonusTax = oneTimeItems.get(RoutineCode.BONUS_TAX);
+
+        System.out.println("Income tax amount: " + incomeTax.getTaxAmount());
+        System.out.println("Bonus tax amount: " + bonusTax.getTaxAmount());
     }
 }
 ```

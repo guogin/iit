@@ -20,7 +20,7 @@ public class TaxRoutineTest {
 
     @Test
     void when_execute_should_combine_tracelogs() throws Exception {
-        TaxRoutine routine = new TaxRoutineImpl(assessor, calculator);
+        TaxRoutine routine = new DummyRoutine(assessor, calculator);
         TaxCalculationParameter parameter = new TaxCalculationParameter();
 
         TraceableTaxCalculationResultItem resultItem = routine.execute(parameter);
@@ -32,5 +32,16 @@ public class TaxRoutineTest {
         String json = objectMapper.writeValueAsString(traceLog);
         assertThat(json).contains(DummyTaxableIncomeAssessor.ASSESSOR_TRACE_LOG_MESSAGE)
                 .contains(DummyTaxCalculator.CALCULATOR_TRACE_LOG_MESSAGE);
+    }
+
+    private static class DummyRoutine extends TaxRoutineImpl {
+        public DummyRoutine(TaxableIncomeAssessor assessor, TaxCalculator calculator) {
+            super(assessor, calculator);
+        }
+
+        @Override
+        public RoutineCode getRoutineCode() {
+            return RoutineCode.INCOME_TAX;
+        }
     }
 }

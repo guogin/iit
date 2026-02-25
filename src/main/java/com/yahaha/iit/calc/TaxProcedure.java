@@ -2,9 +2,9 @@ package com.yahaha.iit.calc;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class TaxProcedure {
     private final List<TaxRoutine> routines;
@@ -22,10 +22,11 @@ public class TaxProcedure {
     }
 
     public TraceableTaxCalculationResult execute(TaxCalculationParameter request) {
-        List<TraceableTaxCalculationResultItem> taxCalculationResultItems = routines.stream()
-                .map(routine -> routine.execute(request))
-                .collect(Collectors.toList());
+        Map<RoutineCode, TraceableTaxCalculationResultItem> taxCalculationResultItems = new LinkedHashMap<>();
+        for (TaxRoutine routine : routines) {
+            taxCalculationResultItems.put(routine.getRoutineCode(), routine.execute(request));
+        }
 
-        return TraceableTaxCalculationResult.of(taxCalculationResultItems.toArray(new TraceableTaxCalculationResultItem[0]));
+        return TraceableTaxCalculationResult.of(taxCalculationResultItems);
     }
 }

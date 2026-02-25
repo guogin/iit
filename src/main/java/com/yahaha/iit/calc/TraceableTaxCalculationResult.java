@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import javax.money.MonetaryAmount;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.yahaha.iit.util.MoneyUtil.ZERO;
@@ -17,24 +16,28 @@ import static com.yahaha.iit.util.MoneyUtil.ZERO;
 @EqualsAndHashCode
 @ToString
 public class TraceableTaxCalculationResult {
-    private List<TraceableTaxCalculationResultItem> items;
+    private Map<RoutineCode, TraceableTaxCalculationResultItem> items;
     @JsonIgnore
     private TraceLog traceLog;
 
     private TraceableTaxCalculationResult() {
     }
 
-    public static TraceableTaxCalculationResult of(TraceableTaxCalculationResultItem... items) {
+    public static TraceableTaxCalculationResult of(Map<RoutineCode, TraceableTaxCalculationResultItem> items) {
         TraceableTaxCalculationResult result = new TraceableTaxCalculationResult();
-        result.items = Arrays.asList(items);
+        result.items = items;
         result.traceLog = TraceLog.builder()
-                .subTraceLogs(result.items.stream().map(TraceableTaxCalculationResultItem::getTraceLog).collect(Collectors.toList()))
+                .subTraceLogs(result.items.values().stream()
+                        .map(TraceableTaxCalculationResultItem::getTraceLog)
+                        .collect(Collectors.toList()))
                 .build();
         return result;
     }
 
     @JsonGetter
     public MonetaryAmount getTotalTaxAmount() {
-        return items.stream().map(TraceableTaxCalculationResultItem::getTaxAmount).reduce(ZERO, MonetaryAmount::add);
+        return items.values().stream()
+                .map(TraceableTaxCalculationResultItem::getTaxAmount)
+                .reduce(ZERO, MonetaryAmount::add);
     }
 }

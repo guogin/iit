@@ -4,9 +4,9 @@ import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class TaxRoutineImpl implements TaxRoutine {
-    private TaxableIncomeAssessor taxBaseAssessor;
-    private TaxCalculator taxCalculator;
+public abstract class TaxRoutineImpl implements TaxRoutine {
+    private final TaxableIncomeAssessor taxBaseAssessor;
+    private final TaxCalculator taxCalculator;
 
     public TaxRoutineImpl(TaxableIncomeAssessor taxBaseAssessor, TaxCalculator taxCalculator) {
         this.taxBaseAssessor = taxBaseAssessor;
