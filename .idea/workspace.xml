@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITRequestMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxProcedureFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxProcedureFactory2024.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTaxCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AbstractProgressiveTaxCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeAssessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITCalculatorImpl2024.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/IITResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TraceLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,33 +32,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.All in iit.executor": "Run",
-    "JUnit.IITResultTest.executor": "Run",
-    "JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/I061761/Depots/iit/pom.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.All in iit.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IITResultTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubTotalProcedureTest.when_subtotal_is_explained_should_be_structured.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/I061761/Depots/iit/pom.xml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.yahaha.iit.calc" />
@@ -139,6 +124,7 @@
       <workItem from="1770890103138" duration="34000" />
       <workItem from="1771925598846" duration="839000" />
       <workItem from="1771927332939" duration="116000" />
+      <workItem from="1771927775648" duration="6000" />
     </task>
     <servers />
   </component>
