@@ -27,8 +27,8 @@ public class TraceableTaxCalculationResultTest {
         TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().taxAmount(TWO_THOUSAND_CNY).build();
 
         Map<RoutineCode, TraceableTaxCalculationResultItem> items = new LinkedHashMap<>();
-        items.put(RoutineCode.INCOME_TAX, item1);
-        items.put(RoutineCode.BONUS_TAX, item2);
+        items.put(RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX, item1);
+        items.put(RoutineCode.ONE_TIME_BONUS_TAX, item2);
         TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(items);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(THREE_THOUSAND_CNY);
@@ -40,8 +40,8 @@ public class TraceableTaxCalculationResultTest {
         TraceableTaxCalculationResultItem item2 = TraceableTaxCalculationResultItem.builder().build();
 
         Map<RoutineCode, TraceableTaxCalculationResultItem> items = new LinkedHashMap<>();
-        items.put(RoutineCode.INCOME_TAX, item1);
-        items.put(RoutineCode.BONUS_TAX, item2);
+        items.put(RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX, item1);
+        items.put(RoutineCode.ONE_TIME_BONUS_TAX, item2);
         TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(items);
 
         assertThat(result.getTotalTaxAmount()).isEqualTo(ONE_THOUSAND_CNY);
@@ -61,8 +61,8 @@ public class TraceableTaxCalculationResultTest {
                 .build();
 
         Map<RoutineCode, TraceableTaxCalculationResultItem> items = new LinkedHashMap<>();
-        items.put(RoutineCode.INCOME_TAX, item1);
-        items.put(RoutineCode.BONUS_TAX, item2);
+        items.put(RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX, item1);
+        items.put(RoutineCode.ONE_TIME_BONUS_TAX, item2);
         TraceableTaxCalculationResult result = TraceableTaxCalculationResult.of(items);
 
         ObjectMapper objectMapper = new ObjectMapper();

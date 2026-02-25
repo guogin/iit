@@ -9,12 +9,12 @@ public final class TaxProcedureFactory2024 implements TaxProcedureFactory {
         List<TaxRoutine> routines = new ArrayList<>();
 
         if (parameter.getBonusTaxationOption() == BonusTaxationOption.ONE_TIME_TAXATION) {
-            routines.add(new AnnualIncomeTaxRoutine());
-            routines.add(new AnnualBonusTaxRoutine());
+            routines.add(new AnnualComprehensiveIncomeOnlyTaxRoutine());
+            routines.add(new AnnualOneTimeBonusTaxRoutine());
         }
 
         if (parameter.getBonusTaxationOption() == BonusTaxationOption.INTEGRATED_TAXATION) {
-            routines.add(new AnnualIntegratedIncomeTaxRoutine());
+            routines.add(new AnnualComprehensiveIncomeWithBonusTaxRoutine());
         }
 
         return new TaxProcedure(routines);

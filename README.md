@@ -46,8 +46,8 @@ public class MyIITSimulator {
         System.out.println("Integrated tax: " + integrated.getTotalTaxAmount());
 
         Map<RoutineCode, TraceableTaxCalculationResultItem> oneTimeItems = oneTime.getItems();
-        TraceableTaxCalculationResultItem incomeTax = oneTimeItems.get(RoutineCode.INCOME_TAX);
-        TraceableTaxCalculationResultItem bonusTax = oneTimeItems.get(RoutineCode.BONUS_TAX);
+        TraceableTaxCalculationResultItem incomeTax = oneTimeItems.get(RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX);
+        TraceableTaxCalculationResultItem bonusTax = oneTimeItems.get(RoutineCode.ONE_TIME_BONUS_TAX);
 
         System.out.println("Income tax amount: " + incomeTax.getTaxAmount());
         System.out.println("Bonus tax amount: " + bonusTax.getTaxAmount());

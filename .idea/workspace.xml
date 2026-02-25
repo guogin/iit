@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ad212f-9767-4de3-b610-c2febc9fde07" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeWithBonusTaxRoutine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualBonusTaxRoutine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualOneTimeBonusTaxRoutine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualIncomeTaxRoutine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualComprehensiveIncomeOnlyTaxRoutine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/AnnualIntegratedIncomeTaxRoutine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/RoutineCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/RoutineCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxProcedureFactory2024.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahaha/iit/calc/TaxProcedureFactory2024.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/IITCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TaxRoutineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TaxRoutineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TraceableTaxCalculationResultTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yahaha/iit/calc/TraceableTaxCalculationResultTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +139,7 @@
       <workItem from="1771985845261" duration="9070000" />
       <workItem from="1772007127464" duration="3346000" />
       <workItem from="1772010587668" duration="176000" />
+      <workItem from="1772011132995" duration="1341000" />
     </task>
     <servers />
   </component>

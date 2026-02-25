@@ -41,7 +41,7 @@ public class TaxRoutineTest {
 
         @Override
         public RoutineCode getRoutineCode() {
-            return RoutineCode.INCOME_TAX;
+            return RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX;
         }
     }
 }

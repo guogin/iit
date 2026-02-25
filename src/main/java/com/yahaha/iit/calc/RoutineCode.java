@@ -1,7 +1,7 @@
 package com.yahaha.iit.calc;
 
 public enum RoutineCode {
-    INCOME_TAX,
-    BONUS_TAX,
-    INTEGRATED_INCOME_TAX,
+    COMPREHENSIVE_INCOME_ONLY_TAX,
+    ONE_TIME_BONUS_TAX,
+    COMPREHENSIVE_INCOME_WITH_BONUS_TAX,
 }
