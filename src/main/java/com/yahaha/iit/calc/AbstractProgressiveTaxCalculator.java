@@ -1,12 +1,13 @@
 package com.yahaha.iit.calc;
 
+import com.yahaha.iit.util.I18nUtil;
 import com.yahaha.iit.util.MoneyUtil;
 
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
@@ -14,7 +15,7 @@ public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator 
     protected static final MonetaryAmount INFINITE_AMOUNT = MoneyUtil.toAmount(BigDecimal.valueOf(Double.MAX_VALUE));
 
     @Override
-    public TraceableTaxCalculationResultItem calculate(MonetaryAmount taxBaseAmount) {
+    public TraceableTaxCalculationResultItem calculate(MonetaryAmount taxBaseAmount, Locale locale) {
         UnaryOperator<MonetaryAmount> allocator = getIncomeAllocationFunction();
         MonetaryAmount allocatedTaxBaseAmount = allocator.apply(taxBaseAmount);
 
@@ -29,21 +30,21 @@ public abstract class AbstractProgressiveTaxCalculator implements TaxCalculator 
         MonetaryAmount taxAmount = taxBaseAmount.multiply(bracket.getTaxRate())
                 .subtract(bracket.getRapidCalculationDeduction());
 
-        TraceLog traceLog = buildTraceLog(taxBaseAmount, taxAmount, bracket);
+        TraceLog traceLog = buildTraceLog(taxBaseAmount, taxAmount, bracket, locale);
 
         return new TraceableTaxCalculationResultItem(taxBaseAmount, taxAmount, bracket.getTaxRate(), traceLog);
     }
 
-    private TraceLog buildTraceLog(MonetaryAmount taxBaseAmount, MonetaryAmount taxAmount, ProgressiveTaxBracket bracket) {
+    private TraceLog buildTraceLog(MonetaryAmount taxBaseAmount, MonetaryAmount taxAmount, ProgressiveTaxBracket bracket, Locale locale) {
         List<TraceItem> diagnostics = new ArrayList<>();
-        diagnostics.add(new TraceItem("税基 x 税率 =", taxBaseAmount.multiply(bracket.getTaxRate())));
-        diagnostics.add(new TraceItem("扣除：速算扣除数", bracket.getRapidCalculationDeduction().negate()));
-        diagnostics.add(new TraceItem("最终税额", taxAmount));
+        diagnostics.add(new TraceItem(I18nUtil.getMessage("tax.base.times.rate", locale), taxBaseAmount.multiply(bracket.getTaxRate())));
+        diagnostics.add(new TraceItem(I18nUtil.getMessage("tax.deduct.rapid", locale), bracket.getRapidCalculationDeduction().negate()));
+        diagnostics.add(new TraceItem(I18nUtil.getMessage("tax.final.amount", locale), taxAmount));
 
         return TraceLog.builder()
-                .headerMessage(new DiagnosticMessage("通过查询税率表，应使用第{0}档税率，税率为{1}", brackets.indexOf(bracket) + 1, MoneyUtil.formatPercentage(bracket.getTaxRate())))
+                .headerMessage(new DiagnosticMessage(I18nUtil.getMessage("tax.bracket.header", locale), brackets.indexOf(bracket) + 1, MoneyUtil.formatPercentage(bracket.getTaxRate())))
                 .body(diagnostics)
-                .footerMessage(new DiagnosticMessage("应纳税额: {0}", MoneyUtil.format(taxAmount)))
+                .footerMessage(new DiagnosticMessage(I18nUtil.getMessage("tax.amount.footer", locale), MoneyUtil.format(taxAmount)))
                 .build();
     }
 

@@ -17,7 +17,7 @@ public abstract class TaxRoutineImpl implements TaxRoutine {
     public TraceableTaxCalculationResultItem execute(TaxCalculationParameter request) {
         // Always follow the same routine: Determine base, and then calculate tax
         TraceableTaxBaseAmount taxBase = taxBaseAssessor.determineTaxableAmount(request);
-        TraceableTaxCalculationResultItem taxCalculationResultItem = taxCalculator.calculate(taxBase.getAmount());
+        TraceableTaxCalculationResultItem taxCalculationResultItem = taxCalculator.calculate(taxBase.getAmount(), request.getLocale());
 
         MonetaryAmount taxBaseAmount = taxCalculationResultItem.getTaxBaseAmount();
         MonetaryAmount taxAmount = taxCalculationResultItem.getTaxAmount();
