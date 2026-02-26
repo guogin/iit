@@ -1,50 +1,49 @@
 package com.yahaha.iit.calc;
 
+import com.yahaha.iit.util.I18nUtil;
 import com.yahaha.iit.util.MoneyUtil;
 
 import javax.money.MonetaryAmount;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import com.yahaha.iit.util.I18nUtil;
 import java.util.Locale;
+import java.util.Map;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
     @Override
-    public TraceableTaxBaseAmount determineTaxableAmount(TaxCalculationParameter request) {
+    public TraceableTaxBaseAmount determineTaxableAmount(TaxCalculationParameter parameter, Locale locale) {
         //费用
-        MonetaryAmount expenses = request.getServiceRemuneration()
-                .add(request.getAuthorsRemuneration())
-                .add(request.getRoyaltyFees())
+        MonetaryAmount expenses = parameter.getServiceRemuneration()
+                .add(parameter.getAuthorsRemuneration())
+                .add(parameter.getRoyaltyFees())
                 .multiply(0.2); // 20%
 
         //稿酬所得免税部分
-        MonetaryAmount exemptionFromAuthorsRemuneration = request.getAuthorsRemuneration()
+        MonetaryAmount exemptionFromAuthorsRemuneration = parameter.getAuthorsRemuneration()
                 .multiply(0.8)  // 1 - 20%
                 .multiply(0.3);  // 30%
 
         // 减除费用
         MonetaryAmount deductibleExpenses = MoneyUtil.toAmount(60000);
 
-        Locale locale = request.getLocale();
         Map<String, MonetaryAmount> additions = new LinkedHashMap<>();
         Map<String, MonetaryAmount> deductions = new LinkedHashMap<>();
 
-        additions.put(I18nUtil.getMessage("annual.comprehensive.income", locale), request.getAnnualWageIncome());
-        additions.put(I18nUtil.getMessage("service.remuneration", locale), request.getServiceRemuneration());
-        additions.put(I18nUtil.getMessage("authors.remuneration", locale), request.getAuthorsRemuneration());
-        additions.put(I18nUtil.getMessage("royalty.fees", locale), request.getRoyaltyFees());
+        additions.put(I18nUtil.getMessage("annual.comprehensive.income", locale), parameter.getAnnualWageIncome());
+        additions.put(I18nUtil.getMessage("service.remuneration", locale), parameter.getServiceRemuneration());
+        additions.put(I18nUtil.getMessage("authors.remuneration", locale), parameter.getAuthorsRemuneration());
+        additions.put(I18nUtil.getMessage("royalty.fees", locale), parameter.getRoyaltyFees());
 
-        if (request.getBonusTaxationOption() == BonusTaxationOption.INTEGRATED_TAXATION) {
-            additions.put(I18nUtil.getMessage("annual.one.time.bonus", locale), request.getAnnualOneTimeBonus());
+        if (parameter.getBonusTaxationOption() == BonusTaxationOption.INTEGRATED_TAXATION) {
+            additions.put(I18nUtil.getMessage("annual.one.time.bonus", locale), parameter.getAnnualOneTimeBonus());
         }
 
         deductions.put(I18nUtil.getMessage("expenses", locale), expenses);
         deductions.put(I18nUtil.getMessage("authors.remuneration.exemption", locale), exemptionFromAuthorsRemuneration);
         deductions.put(I18nUtil.getMessage("deductible.expenses", locale), deductibleExpenses);
-        deductions.put(I18nUtil.getMessage("additional.special.deductions", locale), request.getAdditionalSpecialDeductions());
-        deductions.put(I18nUtil.getMessage("other.deductions", locale), request.getOtherDeductions());
+        deductions.put(I18nUtil.getMessage("additional.special.deductions", locale), parameter.getAdditionalSpecialDeductions());
+        deductions.put(I18nUtil.getMessage("other.deductions", locale), parameter.getOtherDeductions());
 
         List<TraceItem> detailItems = new ArrayList<>();
 

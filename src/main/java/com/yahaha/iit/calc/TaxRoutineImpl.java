@@ -3,6 +3,7 @@ package com.yahaha.iit.calc;
 import javax.money.MonetaryAmount;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Locale;
 
 public abstract class TaxRoutineImpl implements TaxRoutine {
     private final TaxableIncomeAssessor taxBaseAssessor;
@@ -14,10 +15,11 @@ public abstract class TaxRoutineImpl implements TaxRoutine {
     }
 
     @Override
-    public TraceableTaxCalculationResultItem execute(TaxCalculationParameter request) {
+    public TraceableTaxCalculationResultItem execute(TaxCalculationParameter parameter, Locale locale) {
         // Always follow the same routine: Determine base, and then calculate tax
-        TraceableTaxBaseAmount taxBase = taxBaseAssessor.determineTaxableAmount(request);
-        TraceableTaxCalculationResultItem taxCalculationResultItem = taxCalculator.calculate(taxBase.getAmount(), request.getLocale());
+        Locale resolvedLocale = locale == null ? Locale.SIMPLIFIED_CHINESE : locale;
+        TraceableTaxBaseAmount taxBase = taxBaseAssessor.determineTaxableAmount(parameter, resolvedLocale);
+        TraceableTaxCalculationResultItem taxCalculationResultItem = taxCalculator.calculate(taxBase.getAmount(), resolvedLocale);
 
         MonetaryAmount taxBaseAmount = taxCalculationResultItem.getTaxBaseAmount();
         MonetaryAmount taxAmount = taxCalculationResultItem.getTaxAmount();

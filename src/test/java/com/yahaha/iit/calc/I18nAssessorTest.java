@@ -13,16 +13,14 @@ public class I18nAssessorTest {
 
         TaxCalculationParameter zhParam = new TaxCalculationParameter();
         zhParam.setAnnualOneTimeBonus(1000);
-        zhParam.setLocale(Locale.forLanguageTag("zh-CN"));
 
-        TraceableTaxBaseAmount zhResult = assessor.determineTaxableAmount(zhParam);
+        TraceableTaxBaseAmount zhResult = assessor.determineTaxableAmount(zhParam, Locale.forLanguageTag("zh-CN"));
         String zhHeader = zhResult.getTraceLog().getHeaderMessage().getMessage();
 
         TaxCalculationParameter enParam = new TaxCalculationParameter();
         enParam.setAnnualOneTimeBonus(1000);
-        enParam.setLocale(Locale.forLanguageTag("en-US"));
 
-        TraceableTaxBaseAmount enResult = assessor.determineTaxableAmount(enParam);
+        TraceableTaxBaseAmount enResult = assessor.determineTaxableAmount(enParam, Locale.forLanguageTag("en-US"));
         String enHeader = enResult.getTraceLog().getHeaderMessage().getMessage();
 
         assertThat(zhHeader).isEqualTo("计算全年一次性奖金应纳税部分");
@@ -34,18 +32,13 @@ public class I18nAssessorTest {
     void when_change_locale_comprehensive_income_message_should_change() {
         AnnualComprehensiveIncomeAssessor assessor = new AnnualComprehensiveIncomeAssessor();
 
-        TaxCalculationParameter zhParam = new TaxCalculationParameter();
-        zhParam.setAnnualWageIncome(1000);
-        zhParam.setLocale(Locale.forLanguageTag("zh-CN"));
+        TaxCalculationParameter param = new TaxCalculationParameter();
+        param.setAnnualWageIncome(1000);
 
-        TraceableTaxBaseAmount zhResult = assessor.determineTaxableAmount(zhParam);
+        TraceableTaxBaseAmount zhResult = assessor.determineTaxableAmount(param, Locale.forLanguageTag("zh-CN"));
         String zhHeader = zhResult.getTraceLog().getHeaderMessage().getMessage();
 
-        TaxCalculationParameter enParam = new TaxCalculationParameter();
-        enParam.setAnnualWageIncome(1000);
-        enParam.setLocale(Locale.forLanguageTag("en-US"));
-
-        TraceableTaxBaseAmount enResult = assessor.determineTaxableAmount(enParam);
+        TraceableTaxBaseAmount enResult = assessor.determineTaxableAmount(param, Locale.forLanguageTag("en-US"));
         String enHeader = enResult.getTraceLog().getHeaderMessage().getMessage();
 
         assertThat(zhHeader).isEqualTo("计算全年应纳税综合所得额");

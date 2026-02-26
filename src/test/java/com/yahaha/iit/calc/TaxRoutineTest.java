@@ -1,8 +1,10 @@
 package com.yahaha.iit.calc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,7 +25,7 @@ public class TaxRoutineTest {
         TaxRoutine routine = new DummyRoutine(assessor, calculator);
         TaxCalculationParameter parameter = new TaxCalculationParameter();
 
-        TraceableTaxCalculationResultItem resultItem = routine.execute(parameter);
+        TraceableTaxCalculationResultItem resultItem = routine.execute(parameter, Locale.SIMPLIFIED_CHINESE);
         TraceLog traceLog = resultItem.getTraceLog();
 
         assertThat(traceLog).isNotNull();

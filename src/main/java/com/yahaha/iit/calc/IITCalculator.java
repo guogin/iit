@@ -1,6 +1,11 @@
 package com.yahaha.iit.calc;
 
+import java.util.Locale;
+
 public interface IITCalculator {
     IITResponse simulate(IITRequest request);
-    TraceableTaxCalculationResult calculate(TaxCalculationParameter parameter);
+    default TraceableTaxCalculationResult calculate(TaxCalculationParameter parameter) {
+        return calculate(parameter, Locale.SIMPLIFIED_CHINESE);
+    }
+    TraceableTaxCalculationResult calculate(TaxCalculationParameter parameter, Locale locale);
 }
