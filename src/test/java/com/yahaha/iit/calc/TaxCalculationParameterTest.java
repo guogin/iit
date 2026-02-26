@@ -5,10 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import javax.money.MonetaryAmount;
 
+import java.util.Locale;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TaxCalculationParameterTest {
     static MonetaryAmount ZERO = Money.of(0, "CNY");
+    static Locale ZH_CN = Locale.SIMPLIFIED_CHINESE;
 
     @Test
     void when_getAmount_should_never_be_null(){
@@ -22,6 +25,7 @@ public class TaxCalculationParameterTest {
         assertThat(request.getSpecialDeductions()).isEqualTo(ZERO);
         assertThat(request.getAdditionalSpecialDeductions()).isEqualTo(ZERO);
         assertThat(request.getOtherDeductions()).isEqualTo(ZERO);
+        assertThat(request.getLocale()).isEqualTo(ZH_CN);
     }
 
     @Test

@@ -14,6 +14,11 @@ public final class IITRequestMapper {
         parameter.setAdditionalSpecialDeductions(request.getAdditionalSpecialDeductions());
         parameter.setOtherDeductions(request.getOtherDeductions());
 
+        String localeTag = request.getLocale();
+        if (localeTag != null && !localeTag.isEmpty()) {
+            parameter.setLocale(java.util.Locale.forLanguageTag(localeTag));
+        }
+
         return parameter;
     }
 }

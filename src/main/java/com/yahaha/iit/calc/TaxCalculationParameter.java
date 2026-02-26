@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.money.MonetaryAmount;
+import java.util.Locale;
+
 import static com.yahaha.iit.util.MoneyUtil.ZERO;
 
 @NoArgsConstructor
@@ -18,6 +20,7 @@ public class TaxCalculationParameter {
     private MonetaryAmount serviceRemuneration; //劳务报酬
     private MonetaryAmount royaltyFees; //特许权使用费
     private MonetaryAmount authorsRemuneration; //稿酬
+    private java.util.Locale locale = Locale.SIMPLIFIED_CHINESE; // 输出文字的语言，默认简中
 
     // Deductions
     private MonetaryAmount specialDeductions; //专项扣除（三险一金）
@@ -151,5 +154,13 @@ public class TaxCalculationParameter {
      */
     public BonusTaxationOption getBonusTaxationOption() {
         return bonusTaxationOption == null? BonusTaxationOption.ONE_TIME_TAXATION : bonusTaxationOption;
+    }
+
+    public java.util.Locale getLocale() {
+        return locale == null ? Locale.SIMPLIFIED_CHINESE : locale;
+    }
+
+    public void setLocale(java.util.Locale locale) {
+        this.locale = locale;
     }
 }

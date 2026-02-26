@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import com.yahaha.iit.util.I18nUtil;
+import java.util.Locale;
 
 public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor {
     @Override
@@ -25,23 +27,24 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         // 减除费用
         MonetaryAmount deductibleExpenses = MoneyUtil.toAmount(60000);
 
+        Locale locale = request.getLocale();
         Map<String, MonetaryAmount> additions = new LinkedHashMap<>();
         Map<String, MonetaryAmount> deductions = new LinkedHashMap<>();
 
-        additions.put("年度工资收入", request.getAnnualWageIncome());
-        additions.put("劳务报酬", request.getServiceRemuneration());
-        additions.put("稿酬", request.getAuthorsRemuneration());
-        additions.put("特许权使用费", request.getRoyaltyFees());
+        additions.put(I18nUtil.getMessage("annual.comprehensive.income", locale), request.getAnnualWageIncome());
+        additions.put(I18nUtil.getMessage("service.remuneration", locale), request.getServiceRemuneration());
+        additions.put(I18nUtil.getMessage("authors.remuneration", locale), request.getAuthorsRemuneration());
+        additions.put(I18nUtil.getMessage("royalty.fees", locale), request.getRoyaltyFees());
 
         if (request.getBonusTaxationOption() == BonusTaxationOption.INTEGRATED_TAXATION) {
-            additions.put("全年一次性奖金", request.getAnnualOneTimeBonus());
+            additions.put(I18nUtil.getMessage("annual.one.time.bonus", locale), request.getAnnualOneTimeBonus());
         }
 
-        deductions.put("费用", expenses);
-        deductions.put("稿酬所得免税部分", exemptionFromAuthorsRemuneration);
-        deductions.put("减除费用", deductibleExpenses);
-        deductions.put("专项附加扣除", request.getAdditionalSpecialDeductions());
-        deductions.put("其他扣除项目", request.getOtherDeductions());
+        deductions.put(I18nUtil.getMessage("expenses", locale), expenses);
+        deductions.put(I18nUtil.getMessage("authors.remuneration.exemption", locale), exemptionFromAuthorsRemuneration);
+        deductions.put(I18nUtil.getMessage("deductible.expenses", locale), deductibleExpenses);
+        deductions.put(I18nUtil.getMessage("additional.special.deductions", locale), request.getAdditionalSpecialDeductions());
+        deductions.put(I18nUtil.getMessage("other.deductions", locale), request.getOtherDeductions());
 
         List<TraceItem> detailItems = new ArrayList<>();
 
@@ -55,30 +58,37 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
             taxableAnnualComprehensiveIncome = MoneyUtil.ZERO;
         }
 
-        TraceLog traceLog = buildTraceLog(additions, deductions, taxableAnnualComprehensiveIncome);
+        TraceLog traceLog = buildTraceLog(additions, deductions, taxableAnnualComprehensiveIncome, locale);
 
         return new TraceableTaxBaseAmount(taxableAnnualComprehensiveIncome, traceLog);
     }
 
     private TraceLog buildTraceLog(Map<String, MonetaryAmount> additions,
                                    Map<String, MonetaryAmount> deductions,
-                                   MonetaryAmount taxableAnnualComprehensiveIncome) {
+                                   MonetaryAmount taxableAnnualComprehensiveIncome,
+                                   Locale locale) {
         List<TraceItem> diagnostics = new ArrayList<>();
-        additions.forEach((k, v) -> {
-            if (!v.isZero()) {
-                diagnostics.add(new TraceItem(k, v));
+        if (!additions.isEmpty()) {
+            for (String k : additions.keySet()) {
+                MonetaryAmount v = additions.get(k);
+                if (!v.isZero()) {
+                    diagnostics.add(new TraceItem(k, v));
+                }
             }
-        });
-        deductions.forEach((k, v) -> {
-            if (!v.isZero()) {
-                diagnostics.add(new TraceItem("扣除：" + k, v.negate()));
+        }
+        if (!deductions.isEmpty()) {
+            for (String k : deductions.keySet()) {
+                MonetaryAmount v = deductions.get(k);
+                if (!v.isZero()) {
+                    diagnostics.add(new TraceItem(I18nUtil.getMessage("deduction.prefix", locale) + k, v.negate()));
+                }
             }
-        });
+        }
 
         TraceLog traceLog = TraceLog.builder()
-                .headerMessage(new DiagnosticMessage("计算全年应纳税综合所得额"))
+                .headerMessage(new DiagnosticMessage(I18nUtil.getMessage("annual.comprehensive.income.header", locale)))
                 .body(diagnostics)
-                .footerMessage(new DiagnosticMessage("全年应纳税综合所得额: {0}", MoneyUtil.format(taxableAnnualComprehensiveIncome)))
+                .footerMessage(new DiagnosticMessage(I18nUtil.getMessage("annual.comprehensive.income.footer", locale), MoneyUtil.format(taxableAnnualComprehensiveIncome)))
                 .build();
 
         return traceLog;

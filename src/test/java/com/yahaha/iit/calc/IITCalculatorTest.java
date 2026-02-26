@@ -119,4 +119,36 @@ public class IITCalculatorTest {
         assertThat(result1.getItems()).containsKeys(RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX, RoutineCode.ONE_TIME_BONUS_TAX);
         assertThat(result2.getItems()).containsKeys(RoutineCode.COMPREHENSIVE_INCOME_WITH_BONUS_TAX);
     }
+
+    @Test
+    void when_simulate_with_no_locale_should_return_chinese_text() {
+        IITRequest request = new IITRequest();
+        request.setAnnualWageIncome(BigDecimal.valueOf(10000 * 12));
+
+        IITResponse response = calculator.simulate(request);
+
+        TraceableTaxCalculationResult result = response.getResults().get(BonusTaxationOption.ONE_TIME_TAXATION);
+        TraceableTaxCalculationResultItem item = result.getItems().get(RoutineCode.ONE_TIME_BONUS_TAX);
+        TraceLog traceLog = item.getTraceLog();
+        String headerMessage = traceLog.getSubTraceLogs().get(0).getHeaderMessage().getMessage();
+
+        assertThat(headerMessage).isEqualTo("计算全年一次性奖金应纳税部分");
+    }
+
+    @Test
+    void when_simulate_with_english_locale_should_return_english_text() {
+        IITRequest request = new IITRequest();
+        request.setAnnualWageIncome(BigDecimal.valueOf(10000 * 12));
+
+        request.setLocale("en-US");
+
+        IITResponse response = calculator.simulate(request);
+
+        TraceableTaxCalculationResult result = response.getResults().get(BonusTaxationOption.ONE_TIME_TAXATION);
+        TraceableTaxCalculationResultItem item = result.getItems().get(RoutineCode.ONE_TIME_BONUS_TAX);
+        TraceLog traceLog = item.getTraceLog();
+        String headerMessage = traceLog.getSubTraceLogs().get(0).getHeaderMessage().getMessage();
+
+        assertThat(headerMessage).isEqualTo("Calculate Taxable Portion of Annual One-Time Bonus");
+    }
 }
