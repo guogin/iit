@@ -3,6 +3,7 @@ package com.yahaha.iit.calc;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Locale;
 
 @Data
 public class IITRequest {
@@ -18,6 +19,6 @@ public class IITRequest {
     private BigDecimal additionalSpecialDeductions; //专项附加扣除（赡养老人、房屋贷款、子女教育）
     private BigDecimal otherDeductions; //其他扣除项目
 
-    // Locale, e.g., 'en-US' or 'zh-CN'. Defaults to 'zh-CN'.
-    private String locale = "zh-CN";
+    // Locale, e.g., Locale.forLanguageTag("en-US") or Locale.SIMPLIFIED_CHINESE
+    private Locale locale = Locale.SIMPLIFIED_CHINESE;
 }

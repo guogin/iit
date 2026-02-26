@@ -140,7 +140,7 @@ public class IITCalculatorTest {
         IITRequest request = new IITRequest();
         request.setAnnualWageIncome(BigDecimal.valueOf(10000 * 12));
 
-        request.setLocale("en-US");
+        request.setLocale(java.util.Locale.forLanguageTag("en-US"));
 
         IITResponse response = calculator.simulate(request);
 
