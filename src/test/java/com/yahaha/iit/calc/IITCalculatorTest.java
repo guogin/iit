@@ -151,4 +151,19 @@ public class IITCalculatorTest {
 
         assertThat(headerMessage).isEqualTo("Calculate Taxable Portion of Annual One-Time Bonus");
     }
+
+    @Test
+    void when_special_deductions_present_should_reduce_taxable_income() {
+        TaxCalculationParameter parameter = new TaxCalculationParameter();
+        parameter.setAnnualWageIncome(new BigDecimal("740164.17"));
+        parameter.setAnnualOneTimeBonus(new BigDecimal("129314.55"));
+        parameter.setSpecialDeductions(new BigDecimal("77930.52"));
+        parameter.setAdditionalSpecialDeductions(new BigDecimal("36000"));
+        parameter.setBonusTaxationOption(BonusTaxationOption.ONE_TIME_TAXATION);
+
+        TraceableTaxCalculationResult result = calculator.calculate(parameter);
+        TraceableTaxCalculationResultItem item = result.getItems().get(RoutineCode.COMPREHENSIVE_INCOME_ONLY_TAX);
+
+        assertThat(item.getTaxBaseAmount()).isEqualTo(MoneyUtil.toAmount(new BigDecimal("566233.65")));
+    }
 }

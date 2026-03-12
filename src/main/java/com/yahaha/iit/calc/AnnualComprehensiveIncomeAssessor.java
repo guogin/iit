@@ -42,6 +42,7 @@ public class AnnualComprehensiveIncomeAssessor implements TaxableIncomeAssessor 
         deductions.put(I18nUtil.getMessage("expenses", locale), expenses);
         deductions.put(I18nUtil.getMessage("authors.remuneration.exemption", locale), exemptionFromAuthorsRemuneration);
         deductions.put(I18nUtil.getMessage("deductible.expenses", locale), deductibleExpenses);
+        deductions.put(I18nUtil.getMessage("special.deductions", locale), parameter.getSpecialDeductions());
         deductions.put(I18nUtil.getMessage("additional.special.deductions", locale), parameter.getAdditionalSpecialDeductions());
         deductions.put(I18nUtil.getMessage("other.deductions", locale), parameter.getOtherDeductions());
 
